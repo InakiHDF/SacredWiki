@@ -391,7 +391,7 @@ export default function TeamPokemonCard({
         <div className="flex items-center gap-2 bg-zinc-800/80 border border-zinc-700 rounded-lg px-2 py-1.5">
           {member.item && (
             <img
-              src={`https://play.pokemonshowdown.com/sprites/itemicons/${member.item.toLowerCase().replace(/[^a-z0-9]+/g,'')}.png`}
+              src={`https://play.pokemonshowdown.com/sprites/itemicons/${member.item.toLowerCase().replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-')}.png`}
               className="w-[24px] h-[24px] object-contain pixelated shrink-0"
               alt={member.item}
               onError={(e) => { (e.currentTarget as HTMLImageElement).style.visibility = 'hidden'; }}
