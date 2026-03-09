@@ -40,37 +40,37 @@ function MoveCard({ move, onClear }: { move: MoveData; onClear: () => void }) {
   const catImg = categoryImages[move.category] || categoryImages['Status'];
 
   return (
-    <div className="flex flex-col bg-[#1a1a1f] p-1.5 flex-1 min-w-0 group relative overflow-hidden">
+    <div 
+      className="flex flex-col p-2 flex-1 min-w-0 group relative overflow-hidden rounded-lg border-2"
+      style={{
+        backgroundColor: `${typeColor}40`, // 25% opacity
+        borderColor: typeColor,
+      }}
+    >
       <div className="flex items-center justify-between min-w-0 w-full px-0.5">
         <span className="text-zinc-100 font-bold text-[14px] truncate drop-shadow-sm">{move.name}</span>
         <div className="flex items-center gap-2 shrink-0 ml-1">
           {move.basePower > 0 && (
-            <span className="text-zinc-300 text-[12px] font-bold flex items-center gap-0.5" title="Base Power">
-              <svg className="w-3.5 h-3.5 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"></path><path d="M13 19l6-6"></path><path d="M16 16l4 4"></path><path d="M19 21l2-2"></path><path d="M6.5 9.5L9.5 6.5"></path></svg>
+            <span className="text-zinc-100 text-[12px] font-bold flex items-center gap-0.5" title="Base Power">
+              <svg className="w-3.5 h-3.5 text-zinc-100 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"></path><path d="M13 19l6-6"></path><path d="M16 16l4 4"></path><path d="M19 21l2-2"></path><path d="M6.5 9.5L9.5 6.5"></path></svg>
               {move.basePower}
             </span>
           )}
           {move.accuracy !== undefined && (
-            <span className="text-zinc-400 text-[12px] font-medium flex items-center gap-0.5" title="Accuracy">
-              <svg className="w-3 h-3 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
+            <span className="text-zinc-200 text-[12px] font-medium flex items-center gap-0.5" title="Accuracy">
+              <svg className="w-3 h-3 text-zinc-200 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
               {move.accuracy === true ? '-' : move.accuracy}
             </span>
           )}
         </div>
       </div>
       <div className="flex items-center gap-1.5 mt-1 px-0.5">
-        <span 
-          className="px-1.5 py-[1px] rounded-[3px] text-[9px] font-bold text-white uppercase tracking-wider shadow-sm border border-white/10"
-          style={{ backgroundColor: typeColor }}
-        >
-          {move.type}
-        </span>
         <img src={catImg} alt={move.category} className="h-[14px] w-auto pixelated opacity-90 drop-shadow-sm" />
       </div>
       
       <button
         onClick={onClear}
-        className="absolute right-1 top-1.5 text-zinc-500 hover:text-red-400 bg-[#1a1a1f] rounded opacity-0 group-hover:opacity-100 transition-opacity p-0.5"
+        className="absolute right-1 top-1.5 text-zinc-400 hover:text-red-400 bg-black/20 rounded opacity-0 group-hover:opacity-100 transition-opacity p-0.5"
       >
         <Trash2 className="w-3.5 h-3.5" />
       </button>
