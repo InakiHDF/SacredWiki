@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+.DS_Store
+*.pyc
+__pycache__/
+pokedex-web/node_modules/
+pokedex-web/.next/
+pokedex-web/out/
+.env*
+*.log
