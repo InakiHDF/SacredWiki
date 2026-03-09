@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useTeam } from '@/hooks/useTeam';
 import TeamPokemonCard from './TeamPokemonCard';
 
-export default function TeamBuilder({ teamHook }: { teamHook: ReturnType<typeof useTeam> }) {
+export default function TeamBuilder({ teamHook, onSelectPokemon }: { teamHook: ReturnType<typeof useTeam>; onSelectPokemon: (name: string) => void }) {
   const [activeSubTab, setActiveSubTab] = useState<'box' | 'graveyard'>('box');
 
   const displayList = activeSubTab === 'box' ? teamHook.aliveTeam : teamHook.graveyard;
@@ -59,6 +59,7 @@ export default function TeamBuilder({ teamHook }: { teamHook: ReturnType<typeof 
               killMember={activeSubTab === 'box' ? teamHook.killPokemon : undefined}
               reviveMember={activeSubTab === 'graveyard' ? teamHook.revivePokemon : undefined}
               isGraveyard={activeSubTab === 'graveyard'}
+              onSelectPokemon={onSelectPokemon}
             />
           ))
         )}

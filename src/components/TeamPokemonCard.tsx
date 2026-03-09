@@ -16,6 +16,7 @@ interface TeamPokemonCardProps {
   killMember?: (id: string) => void;
   reviveMember?: (id: string) => void;
   isGraveyard?: boolean;
+  onSelectPokemon?: (name: string) => void;
 }
 
 // Category mapping
@@ -180,7 +181,8 @@ export default function TeamPokemonCard({
   removeMember, 
   killMember, 
   reviveMember, 
-  isGraveyard = false 
+  isGraveyard = false,
+  onSelectPokemon 
 }: TeamPokemonCardProps) {
   
   const dbAccess = db as Record<string, any>;
@@ -325,8 +327,9 @@ export default function TeamPokemonCard({
             const t = e.currentTarget as HTMLImageElement;
             t.src = getSpriteUrl(pkmnData.name);
           }}
-          className="w-24 h-24 object-contain pixelated drop-shadow-lg shrink-0"
+          className="w-24 h-24 object-contain pixelated drop-shadow-lg shrink-0 cursor-pointer hover:scale-105 transition-transform"
           alt={member.pokemonName}
+          onClick={() => onSelectPokemon?.(member.pokemonName)}
         />
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1 flex-wrap">

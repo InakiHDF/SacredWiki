@@ -118,7 +118,13 @@ export default function Home() {
             }} 
           />
         ) : (
-          <TeamBuilder teamHook={teamHook} />
+          <TeamBuilder 
+            teamHook={teamHook}
+            onSelectPokemon={(name) => {
+              const found = Object.values(database).find((p: any) => p.name === name);
+              if (found) setSelectedPokemon(found);
+            }} 
+          />
         )}
         
         {selectedPokemon && (
