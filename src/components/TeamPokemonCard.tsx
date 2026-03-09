@@ -30,27 +30,42 @@ interface MoveData {
   type: string;
   category: string;
   basePower: number;
+  accuracy: number | true;
   pp: number;
 }
 
 // A single selected move displayed as a rich card
 function MoveCard({ move, onClear }: { move: MoveData; onClear: () => void }) {
+  const typeColor = typeColors[move.type] || '#777';
   const catImg = categoryImages[move.category] || categoryImages['Status'];
-  const typeImg = `https://play.pokemonshowdown.com/sprites/types/${move.type}.png`;
 
   return (
     <div className="flex flex-col bg-[#1a1a1f] p-1.5 flex-1 min-w-0 group relative overflow-hidden">
       <div className="flex items-center justify-between min-w-0 w-full px-0.5">
         <span className="text-zinc-100 font-bold text-[14px] truncate drop-shadow-sm">{move.name}</span>
-        {move.basePower > 0 && (
-          <span className="text-zinc-100 text-[13px] font-bold drop-shadow-sm flex items-center gap-0.5 shrink-0 ml-1">
-            <span className="text-zinc-400 text-[10px] mt-0.5">⚔️</span>{move.basePower}
-          </span>
-        )}
+        <div className="flex items-center gap-2 shrink-0 ml-1">
+          {move.basePower > 0 && (
+            <span className="text-zinc-300 text-[12px] font-bold flex items-center gap-0.5" title="Base Power">
+              <svg className="w-3.5 h-3.5 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"></path><path d="M13 19l6-6"></path><path d="M16 16l4 4"></path><path d="M19 21l2-2"></path><path d="M6.5 9.5L9.5 6.5"></path></svg>
+              {move.basePower}
+            </span>
+          )}
+          {move.accuracy !== undefined && (
+            <span className="text-zinc-400 text-[12px] font-medium flex items-center gap-0.5" title="Accuracy">
+              <svg className="w-3 h-3 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
+              {move.accuracy === true ? '-' : move.accuracy}
+            </span>
+          )}
+        </div>
       </div>
       <div className="flex items-center gap-1.5 mt-1 px-0.5">
-        <img src={catImg} alt={move.category} className="h-[14px] w-auto pixelated drop-shadow-sm" />
-        <img src={typeImg} alt={move.type} className="h-[14px] w-auto pixelated drop-shadow-sm" />
+        <span 
+          className="px-1.5 py-[1px] rounded-[3px] text-[9px] font-bold text-white uppercase tracking-wider shadow-sm border border-white/10"
+          style={{ backgroundColor: typeColor }}
+        >
+          {move.type}
+        </span>
+        <img src={catImg} alt={move.category} className="h-[14px] w-auto pixelated opacity-90 drop-shadow-sm" />
       </div>
       
       <button
@@ -131,7 +146,7 @@ function MoveSlot({
           <div className="overflow-y-auto max-h-48">
             {filtered.map(m => {
               const md = movesDataMap.get(m.toLowerCase().replace(/\s/g, ''));
-              const typeImg = md ? `https://play.pokemonshowdown.com/sprites/types/${md.type}.png` : '';
+              const typeColor = md ? (typeColors[md.type] || '#777') : '#555';
               return (
                 <button
                   key={m}
@@ -140,14 +155,26 @@ function MoveSlot({
                 >
                   <span className="text-zinc-200 text-[13px] font-medium flex-1 truncate">{m}</span>
                   {md && (
-                    <>
-                      <img src={typeImg} alt={md.type} className="h-[12px] pixelated" />
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span 
+                        className="px-1.5 py-[1px] rounded-[3px] text-[8px] font-bold text-white uppercase tracking-wider border border-white/10"
+                        style={{ backgroundColor: typeColor }}
+                      >
+                        {md.type}
+                      </span>
                       {md.basePower > 0 && (
-                        <span className="text-zinc-400 text-[11px] font-bold w-6 text-right shrink-0">
+                        <span className="text-zinc-300 text-[11px] font-bold flex items-center gap-0.5 w-8" title="Base Power">
+                          <svg className="w-3 h-3 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"></path><path d="M13 19l6-6"></path><path d="M16 16l4 4"></path><path d="M19 21l2-2"></path><path d="M6.5 9.5L9.5 6.5"></path></svg>
                           {md.basePower}
                         </span>
                       )}
-                    </>
+                      {md.accuracy !== undefined && (
+                        <span className="text-zinc-400 text-[11px] font-medium flex items-center gap-0.5 w-8" title="Accuracy">
+                          <svg className="w-2.5 h-2.5 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
+                          {md.accuracy === true ? '-' : md.accuracy}
+                        </span>
+                      )}
+                    </div>
                   )}
                 </button>
               );
@@ -227,6 +254,7 @@ export default function TeamPokemonCard({
               type: d.type ?? 'Normal',
               category: d.category ?? 'Status',
               basePower: d.basePower ?? 0,
+              accuracy: d.accuracy ?? 100,
               pp: d.pp ?? 0,
             });
           }
