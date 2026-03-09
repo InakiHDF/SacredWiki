@@ -1,0 +1,9 @@
+1:"$Sreact.fragment"
+2:I[47257,["/SacredWiki/_next/static/chunks/2f236954d6a65e12.js"],"ClientPageRoot"]
+3:I[27759,["/SacredWiki/_next/static/chunks/4a27851a32177af6.js","/SacredWiki/_next/static/chunks/8a4ebedb0ea0053b.js"],"default"]
+6:I[97367,["/SacredWiki/_next/static/chunks/2f236954d6a65e12.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+0:{"buildId":"BX6ApVzBRNyPId3--nBn-","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/SacredWiki/_next/static/chunks/4a27851a32177af6.js","async":true}],["$","script","script-1",{"src":"/SacredWiki/_next/static/chunks/8a4ebedb0ea0053b.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+4:{}
+5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
+8:null
