@@ -5,14 +5,18 @@ import Navigation, { ViewMode } from "@/components/Navigation";
 import PokemonTable from "@/components/PokemonTable";
 import PokemonDetail from "@/components/PokemonDetail";
 import LocationsView from "@/components/LocationsView";
+import TeamBuilder from "@/components/TeamBuilder";
+import { useTeam } from "@/hooks/useTeam";
 import db from "@/data/database.json";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showChangedOnly, setShowChangedOnly] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("augmented");
-  const [activeTab, setActiveTab] = useState<'pokedex' | 'locations'>('pokedex');
+  const [activeTab, setActiveTab] = useState<'pokedex' | 'locations' | 'teambuilder'>('pokedex');
   const [selectedPokemon, setSelectedPokemon] = useState<any>(null);
+  
+  const teamHook = useTeam();
 
   const database = db as Record<string, any>;
 
@@ -57,8 +61,10 @@ export default function Home() {
           <p className="text-zinc-300">
             {activeTab === 'pokedex' ? (
               <>Showing <span className="text-[var(--gold)] font-bold">{filteredPokemon.length}</span> Pokémon. Select a row to view full details.</>
-            ) : (
+            ) : activeTab === 'locations' ? (
               <>Showing Wild Encounters. Expand a row to view locations.</>
+            ) : (
+              <>Manage your Pokémon team and view your Box and Graveyard.</>
             )}
           </p>
         </div>
@@ -69,7 +75,7 @@ export default function Home() {
             viewMode={viewMode} 
             onSelectPokemon={setSelectedPokemon} 
           />
-        ) : (
+        ) : activeTab === 'locations' ? (
           <LocationsView 
             searchTerm={searchTerm}
             onSelectPokemon={(name) => {
@@ -77,6 +83,8 @@ export default function Home() {
               if (found) setSelectedPokemon(found);
             }} 
           />
+        ) : (
+          <TeamBuilder teamHook={teamHook} />
         )}
         
         {selectedPokemon && (
@@ -85,6 +93,10 @@ export default function Home() {
             viewMode={viewMode}
             setViewMode={setViewMode}
             onClose={() => setSelectedPokemon(null)}
+            onAddBox={() => {
+              teamHook.addPokemon(selectedPokemon.name);
+              alert(`${selectedPokemon.name} was added to your Box!`);
+            }}
             onNavigate={(name) => {
               const found = Object.values(database).find((p: any) => p.name === name);
               if (found) setSelectedPokemon(found);

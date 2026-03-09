@@ -10,9 +10,10 @@ interface PokemonDetailProps {
   setViewMode: (mode: ViewMode) => void;
   onClose: () => void;
   onNavigate: (pokemonName: string) => void;
+  onAddBox?: () => void;
 }
 
-export default function PokemonDetail({ pokemon, viewMode, setViewMode, onClose, onNavigate }: PokemonDetailProps) {
+export default function PokemonDetail({ pokemon, viewMode, setViewMode, onClose, onNavigate, onAddBox }: PokemonDetailProps) {
   const [movesData, setMovesData] = useState<Record<string, any>>({});
   const [abilitiesData, setAbilitiesData] = useState<Record<string, any>>({});
   
@@ -224,18 +225,28 @@ export default function PokemonDetail({ pokemon, viewMode, setViewMode, onClose,
           <div className="flex items-center gap-4">
             <span className="font-mono text-zinc-500 font-bold hidden sm:inline-block">#{String(pokemon.id).padStart(3, '0')}</span>
             <h2 className="text-xl font-bold text-zinc-100">{pokemon.name}</h2>
-            {pokemon.isChanged && (
-              <button
-                onClick={() => setViewMode(viewMode === 'augmented' ? 'vanilla' : 'augmented')}
-                className={`ml-2 px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded border transition-colors ${
-                  viewMode === 'augmented' 
-                    ? 'bg-gold/20 text-[var(--gold)] border-[var(--gold)]' 
-                    : 'bg-zinc-800 text-zinc-400 border-[var(--border-color)] hover:text-zinc-200'
-                }`}
-              >
-                {viewMode === 'augmented' ? 'Augmented View' : 'Vanilla View'}
-              </button>
-            )}
+            <div className="flex gap-2 ml-2">
+              {pokemon.isChanged && (
+                <button
+                  onClick={() => setViewMode(viewMode === 'augmented' ? 'vanilla' : 'augmented')}
+                  className={`px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded border transition-colors ${
+                    viewMode === 'augmented' 
+                      ? 'bg-gold/20 text-[var(--gold)] border-[var(--gold)]' 
+                      : 'bg-zinc-800 text-zinc-400 border-[var(--border-color)] hover:text-zinc-200'
+                  }`}
+                >
+                  {viewMode === 'augmented' ? 'Augmented View' : 'Vanilla View'}
+                </button>
+              )}
+              {onAddBox && (
+                <button
+                  onClick={onAddBox}
+                  className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider bg-green-900/40 text-green-400 border border-green-700 hover:bg-green-800/60 rounded transition-colors"
+                >
+                  Add to Box
+                </button>
+              )}
+            </div>
           </div>
           <button onClick={onClose} className="p-1 hover:bg-zinc-700 rounded-full transition-colors text-zinc-400 hover:text-white">
             <X className="h-6 w-6" />
