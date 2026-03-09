@@ -14,6 +14,8 @@ interface NavigationProps {
   setViewMode: (mode: ViewMode) => void;
   activeTab: 'pokedex' | 'locations' | 'teambuilder';
   setActiveTab: (tab: 'pokedex' | 'locations' | 'teambuilder') => void;
+  dexMode: 'national' | 'galar';
+  setDexMode: (mode: 'national' | 'galar') => void;
 }
 
 export default function Navigation({
@@ -24,7 +26,9 @@ export default function Navigation({
   viewMode,
   setViewMode,
   activeTab,
-  setActiveTab
+  setActiveTab,
+  dexMode,
+  setDexMode
 }: NavigationProps) {
   return (
     <nav className="sticky top-0 z-50 w-full bg-[var(--background)]/95 backdrop-blur border-b border-[var(--border-color)] shadow-sm">
@@ -85,7 +89,34 @@ export default function Navigation({
           <div className="flex justify-end items-center gap-4">
             
             {/* Toggles */}
-            <div className="flex gap-2 w-full sm:w-auto justify-end">
+            <div className="flex gap-2 w-full sm:w-auto justify-end flex-wrap">
+
+              {/* Dex Mode Toggle - only shown on Pokédex tab */}
+              {activeTab === 'pokedex' && (
+                <div className="flex items-center bg-zinc-800/70 border border-[var(--border-color)] rounded-md p-0.5">
+                  <button
+                    onClick={() => setDexMode('national')}
+                    className={`px-3 py-1 text-xs font-bold rounded transition-colors ${
+                      dexMode === 'national'
+                        ? 'bg-red-800/70 text-red-200 border border-red-600'
+                        : 'text-zinc-500 hover:text-zinc-300'
+                    }`}
+                  >
+                    Nacional
+                  </button>
+                  <button
+                    onClick={() => setDexMode('galar')}
+                    className={`px-3 py-1 text-xs font-bold rounded transition-colors ${
+                      dexMode === 'galar'
+                        ? 'bg-blue-800/70 text-blue-200 border border-blue-600'
+                        : 'text-zinc-500 hover:text-zinc-300'
+                    }`}
+                  >
+                    Galar
+                  </button>
+                </div>
+              )}
+
               <button
                 onClick={() => setViewMode(viewMode === 'augmented' ? 'vanilla' : 'augmented')}
                 className={`px-3 py-1.5 text-xs sm:text-sm rounded-md font-medium border transition-colors ${

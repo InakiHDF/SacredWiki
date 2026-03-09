@@ -8,12 +8,22 @@ import LocationsView from "@/components/LocationsView";
 import TeamBuilder from "@/components/TeamBuilder";
 import { useTeam } from "@/hooks/useTeam";
 import db from "@/data/database.json";
+import galarDexRaw from "@/data/galar_dex.json";
+
+const galarDexSet = new Set<string>(galarDexRaw as string[]);
+
+// Build a Galar order map from the raw array: pokemonName -> galar_dex_index
+const galarOrderMap = new Map<string, number>();
+(galarDexRaw as string[]).forEach((name, idx) => {
+  galarOrderMap.set(name.toLowerCase().replace(/[^a-z0-9]/g, ''), idx);
+});
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showChangedOnly, setShowChangedOnly] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("augmented");
   const [activeTab, setActiveTab] = useState<'pokedex' | 'locations' | 'teambuilder'>('pokedex');
+  const [dexMode, setDexMode] = useState<'national' | 'galar'>('national');
   const [selectedPokemon, setSelectedPokemon] = useState<any>(null);
   
   const teamHook = useTeam();
@@ -21,7 +31,7 @@ export default function Home() {
   const database = db as Record<string, any>;
 
   const filteredPokemon = useMemo(() => {
-    return Object.values(database).filter((pokemon: any) => {
+    let list = Object.values(database).filter((pokemon: any) => {
       // Filter by "Changed Only"
       if (showChangedOnly && !pokemon.isChanged) {
         return false;
@@ -33,10 +43,29 @@ export default function Home() {
           return false;
         }
       }
+
+      // Filter by Galar Dex
+      if (dexMode === 'galar') {
+        const key = pokemon.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (!galarDexSet.has(key)) return false;
+      }
       
       return true;
     });
-  }, [searchTerm, showChangedOnly]);
+
+    // Sort: Galar dex order or National dex order (by id)
+    if (dexMode === 'galar') {
+      list = list.sort((a: any, b: any) => {
+        const aKey = a.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const bKey = b.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const aIdx = galarOrderMap.get(aKey) ?? 9999;
+        const bIdx = galarOrderMap.get(bKey) ?? 9999;
+        return aIdx - bIdx;
+      });
+    }
+
+    return list;
+  }, [searchTerm, showChangedOnly, dexMode, database]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -49,6 +78,8 @@ export default function Home() {
         setViewMode={setViewMode}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        dexMode={dexMode}
+        setDexMode={setDexMode}
       />
       
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
@@ -60,7 +91,10 @@ export default function Home() {
         <div className="mb-4">
           <p className="text-zinc-300">
             {activeTab === 'pokedex' ? (
-              <>Showing <span className="text-[var(--gold)] font-bold">{filteredPokemon.length}</span> Pokémon. Select a row to view full details.</>
+              <>
+                {dexMode === 'galar' && <span className="text-blue-400 font-bold mr-2">[Dex de Galar]</span>}
+                Showing <span className="text-[var(--gold)] font-bold">{filteredPokemon.length}</span> Pokémon. Select a row to view full details.
+              </>
             ) : activeTab === 'locations' ? (
               <>Showing Wild Encounters. Expand a row to view locations.</>
             ) : (

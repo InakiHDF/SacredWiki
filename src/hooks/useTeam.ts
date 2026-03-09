@@ -5,6 +5,7 @@ export interface TeamPokemon {
   pokemonName: string;
   nickname: string;
   role: string;
+  item: string;
   ability: string;
   moves: [string, string, string, string];
   status: 'alive' | 'dead';
@@ -37,6 +38,7 @@ export function useTeam() {
       pokemonName,
       nickname: '',
       role: 'Unassigned',
+      item: '',
       ability: '',
       moves: ['', '', '', ''],
       status: 'alive'
