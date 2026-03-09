@@ -1,6 +1,7 @@
 import React from "react";
-import { typeColors, getSpriteUrl, getBstColor } from "@/lib/utils";
+import { typeColors, getBstColor } from "@/lib/utils";
 import { ViewMode } from "@/components/Navigation";
+import PokemonSprite from "./PokemonSprite";
 
 interface PokemonTableProps {
   pokemonList: any[];
@@ -45,13 +46,8 @@ export default function PokemonTable({ pokemonList, viewMode, onSelectPokemon }:
                 </td>
                 <td className="px-4 py-2 whitespace-nowrap text-center">
                   {/* Showdown Sprite API */}
-                  <img 
-                    src={getSpriteUrl(p.name)} 
-                    onError={(e) => { 
-                      const target = e.currentTarget as HTMLImageElement;
-                      if (p.name.includes('-')) target.src = getSpriteUrl(p.name.split('-')[0]);
-                    }}
-                    alt={p.name} 
+                  <PokemonSprite 
+                    pokemonName={p.name}
                     className="h-10 w-10 object-contain pixelated inline-block" 
                     loading="lazy" 
                   />

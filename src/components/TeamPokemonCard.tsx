@@ -4,7 +4,8 @@ import React, { useMemo, useState, useEffect } from 'react';
 import { TeamPokemon } from '@/hooks/useTeam';
 import db from '@/data/database.json';
 import itemsRaw from '@/data/items.json';
-import { typeColors, getSpriteUrl, getAnimSpriteUrl, getStatColor } from '@/lib/utils';
+import { typeColors, getStatColor } from '@/lib/utils';
+import PokemonSprite from './PokemonSprite';
 import { Skull, Trash2, RotateCcw, ExternalLink, ChevronDown } from 'lucide-react';
 
 const itemsList: string[] = (itemsRaw as string[]).sort();
@@ -321,12 +322,8 @@ export default function TeamPokemonCard({
 
       {/* Header: Sprite + Name + BST */}
       <div className="flex items-center px-3 pt-1 pb-2 gap-3">
-        <img 
-          src={getAnimSpriteUrl(pkmnData.name)}
-          onError={(e) => {
-            const t = e.currentTarget as HTMLImageElement;
-            t.src = getSpriteUrl(pkmnData.name);
-          }}
+        <PokemonSprite
+          pokemonName={pkmnData.name}
           className="w-24 h-24 object-contain pixelated drop-shadow-lg shrink-0 cursor-pointer hover:scale-105 transition-transform"
           alt={member.pokemonName}
           onClick={() => onSelectPokemon?.(member.pokemonName)}

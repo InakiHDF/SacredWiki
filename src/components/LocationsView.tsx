@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import locationsDataRaw from '../data/locations.json';
 import { getSpriteUrl } from '../lib/utils';
+import PokemonSprite from './PokemonSprite';
 
 // Type definitions for the JSON structure
 interface Encounter {
@@ -101,14 +102,9 @@ export default function LocationsView({ onSelectPokemon, searchTerm }: Locations
                                 className="flex items-center gap-3 p-2 rounded hover:bg-zinc-700/40 cursor-pointer transition-colors"
                                 onClick={() => onSelectPokemon(enc.pokemon)}
                               >
-                                <img 
-                                  src={getSpriteUrl(enc.pokemon)} 
-                                  alt={enc.pokemon} 
+                                <PokemonSprite 
+                                  pokemonName={enc.pokemon} 
                                   className="w-8 h-8 object-contain pixelated"
-                                  onError={(e) => { 
-                                    const t = e.currentTarget as HTMLImageElement;
-                                    if (enc.pokemon.includes('-')) t.src = getSpriteUrl(enc.pokemon.split('-')[0]);
-                                  }}
                                   loading="lazy"
                                 />
                                 <div className="flex-1 min-w-0">

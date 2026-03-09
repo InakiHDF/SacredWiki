@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { X, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
-import { typeColors, getSpriteUrl, getAnimSpriteUrl, getStatColor, getBstColor } from "@/lib/utils";
+import { typeColors, getSpriteUrl, getStatColor, getBstColor } from "@/lib/utils";
 import { ViewMode } from "@/components/Navigation";
+import PokemonSprite from "./PokemonSprite";
 import db from "@/data/database.json";
 
 interface PokemonDetailProps {
@@ -262,20 +263,8 @@ export default function PokemonDetail({ pokemon, viewMode, setViewMode, onClose,
             {/* Left Column: Sprite & Identity */}
             <div className="flex flex-col items-center justify-center p-6 bg-[var(--panel)] rounded-xl border border-[var(--border-color)] relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--gold)] opacity-[0.03] rounded-bl-full" />
-              <img 
-                src={getAnimSpriteUrl(pokemon.name)} 
-                onError={(e) => { 
-                  const target = e.currentTarget as HTMLImageElement;
-                  const baseSpr = getSpriteUrl(pokemon.name);
-                  if (target.src !== baseSpr && !target.dataset.triedBase) {
-                    target.dataset.triedBase = "true";
-                    target.src = baseSpr;
-                  } else if (pokemon.name.includes('-') && !target.dataset.triedFallback) {
-                    target.dataset.triedFallback = "true";
-                    target.src = getSpriteUrl(pokemon.name.split('-')[0]);
-                  }
-                }}
-                alt={pokemon.name} 
+              <PokemonSprite
+                pokemonName={pokemon.name}
                 className="pixelated h-32 md:h-40 object-contain drop-shadow-lg scale-100" 
               />
               
