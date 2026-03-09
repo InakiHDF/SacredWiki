@@ -162,18 +162,6 @@ function MoveSlot({
                       >
                         {md.type}
                       </span>
-                      {md.basePower > 0 && (
-                        <span className="text-zinc-300 text-[11px] font-bold flex items-center gap-0.5 w-8" title="Base Power">
-                          <svg className="w-3 h-3 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"></path><path d="M13 19l6-6"></path><path d="M16 16l4 4"></path><path d="M19 21l2-2"></path><path d="M6.5 9.5L9.5 6.5"></path></svg>
-                          {md.basePower}
-                        </span>
-                      )}
-                      {md.accuracy !== undefined && (
-                        <span className="text-zinc-400 text-[11px] font-medium flex items-center gap-0.5 w-8" title="Accuracy">
-                          <svg className="w-2.5 h-2.5 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
-                          {md.accuracy === true ? '-' : md.accuracy}
-                        </span>
-                      )}
                     </div>
                   )}
                 </button>
