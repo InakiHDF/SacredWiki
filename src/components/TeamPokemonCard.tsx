@@ -18,11 +18,11 @@ interface TeamPokemonCardProps {
   isGraveyard?: boolean;
 }
 
-// Category icons (using emoji fallbacks)
-const categoryStyle: Record<string, { bg: string; label: string }> = {
-  Physical: { bg: '#C1531A', label: 'PHY' },
-  Special:  { bg: '#5B5BBA', label: 'SPC' },
-  Status:   { bg: '#8A8A8A', label: 'STA' },
+// Category mapping
+const categoryImages: Record<string, string> = {
+  Physical: 'https://play.pokemonshowdown.com/sprites/categories/Physical.png',
+  Special:  'https://play.pokemonshowdown.com/sprites/categories/Special.png',
+  Status:   'https://play.pokemonshowdown.com/sprites/categories/Status.png',
 };
 
 interface MoveData {
@@ -35,35 +35,29 @@ interface MoveData {
 
 // A single selected move displayed as a rich card
 function MoveCard({ move, onClear }: { move: MoveData; onClear: () => void }) {
-  const typeBg = typeColors[move.type] || '#777';
-  const cat = categoryStyle[move.category] || categoryStyle['Status']!;
+  const catImg = categoryImages[move.category] || categoryImages['Status'];
+  const typeImg = `https://play.pokemonshowdown.com/sprites/types/${move.type}.png`;
+
   return (
-    <div className="flex items-center gap-2 bg-zinc-800/80 border border-zinc-700 rounded-lg px-2 py-1.5 flex-1 min-w-0 group relative">
-      <div className="flex flex-col min-w-0 flex-1">
-        <span className="text-white font-semibold text-xs truncate">{move.name}</span>
-        <div className="flex items-center gap-1 mt-0.5">
-          <span
-            className="px-1.5 py-0.5 rounded text-[9px] font-bold text-white uppercase leading-none"
-            style={{ backgroundColor: typeBg }}
-          >
-            {move.type}
+    <div className="flex flex-col bg-[#1a1a1f] p-1.5 flex-1 min-w-0 group relative overflow-hidden">
+      <div className="flex items-center justify-between min-w-0 w-full px-0.5">
+        <span className="text-zinc-100 font-bold text-[14px] truncate drop-shadow-sm">{move.name}</span>
+        {move.basePower > 0 && (
+          <span className="text-zinc-100 text-[13px] font-bold drop-shadow-sm flex items-center gap-0.5 shrink-0 ml-1">
+            <span className="text-zinc-400 text-[10px] mt-0.5">⚔️</span>{move.basePower}
           </span>
-          <span
-            className="px-1.5 py-0.5 rounded text-[9px] font-bold text-white uppercase leading-none"
-            style={{ backgroundColor: cat.bg }}
-          >
-            {cat.label}
-          </span>
-          {move.basePower > 0 && (
-            <span className="text-zinc-400 text-[9px] font-mono ml-0.5">×{move.basePower}</span>
-          )}
-        </div>
+        )}
       </div>
+      <div className="flex items-center gap-1.5 mt-1 px-0.5">
+        <img src={catImg} alt={move.category} className="h-[14px] w-auto pixelated drop-shadow-sm" />
+        <img src={typeImg} alt={move.type} className="h-[14px] w-auto pixelated drop-shadow-sm" />
+      </div>
+      
       <button
         onClick={onClear}
-        className="text-zinc-600 hover:text-red-400 ml-auto shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-lg leading-none"
+        className="absolute right-1 top-1.5 text-zinc-500 hover:text-red-400 bg-[#1a1a1f] rounded opacity-0 group-hover:opacity-100 transition-opacity p-0.5"
       >
-        ×
+        <Trash2 className="w-3.5 h-3.5" />
       </button>
     </div>
   );
@@ -115,10 +109,10 @@ function MoveSlot({
       ) : (
         <button
           onClick={() => setOpen(v => !v)}
-          className="w-full h-11 flex items-center justify-between gap-1 px-2 bg-zinc-800/60 border border-zinc-700 hover:border-zinc-500 rounded-lg text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+          className="w-full h-[52px] flex items-center justify-between gap-1 px-3 bg-[#1a1a1f] hover:bg-zinc-800/50 border border-transparent rounded-lg text-sm font-medium text-zinc-500 hover:text-zinc-300 transition-colors"
         >
           <span>{placeholder}</span>
-          <ChevronDown className="w-3 h-3 shrink-0" />
+          <ChevronDown className="w-4 h-4 shrink-0" />
         </button>
       )}
 
@@ -131,30 +125,27 @@ function MoveSlot({
               placeholder="Search..."
               value={query}
               onChange={e => setQuery(e.target.value)}
-              className="w-full bg-zinc-800 text-xs text-zinc-200 px-2 py-1 rounded border border-zinc-600 focus:outline-none focus:border-[var(--gold)]"
+              className="w-full bg-zinc-800 text-xs text-zinc-200 px-2 py-1.5 rounded border border-zinc-600 focus:outline-none focus:border-[var(--gold)]"
             />
           </div>
           <div className="overflow-y-auto max-h-48">
             {filtered.map(m => {
               const md = movesDataMap.get(m.toLowerCase().replace(/\s/g, ''));
-              const typeBg2 = md ? (typeColors[md.type] || '#777') : '#555';
+              const typeImg = md ? `https://play.pokemonshowdown.com/sprites/types/${md.type}.png` : '';
               return (
                 <button
                   key={m}
                   onClick={() => { onChange(m); setOpen(false); setQuery(''); }}
                   className="w-full flex items-center gap-2 px-2 py-1.5 hover:bg-zinc-700 text-left transition-colors"
                 >
-                  <span className="text-zinc-200 text-xs flex-1 truncate">{m}</span>
+                  <span className="text-zinc-200 text-[13px] font-medium flex-1 truncate">{m}</span>
                   {md && (
                     <>
-                      <span
-                        className="px-1.5 py-0.5 rounded text-[8px] font-bold text-white uppercase"
-                        style={{ backgroundColor: typeBg2 }}
-                      >
-                        {md.type}
-                      </span>
+                      <img src={typeImg} alt={md.type} className="h-[12px] pixelated" />
                       {md.basePower > 0 && (
-                        <span className="text-zinc-500 text-[9px] font-mono w-7 text-right shrink-0">×{md.basePower}</span>
+                        <span className="text-zinc-400 text-[11px] font-bold w-6 text-right shrink-0">
+                          {md.basePower}
+                        </span>
                       )}
                     </>
                   )}
@@ -381,24 +372,26 @@ export default function TeamPokemonCard({
 
       {/* Item Selector */}
       <div className="px-3 pb-2">
-        <div className="flex items-center gap-2 bg-zinc-800/60 border border-zinc-700 rounded-lg px-2 py-1.5">
+        <div className="flex items-center gap-2 bg-zinc-800/80 border border-zinc-700 rounded-lg px-2 py-1.5">
           {member.item && (
             <img
-              src={`https://play.pokemonshowdown.com/sprites/itemicons/${member.item.toLowerCase().replace(/\s+/g,'-')}.png`}
-              className="w-5 h-5 pixelated shrink-0"
+              src={`https://play.pokemonshowdown.com/sprites/itemicons/${member.item.toLowerCase().replace(/[^a-z0-9]+/g,'')}.png`}
+              className="w-[24px] h-[24px] object-contain pixelated shrink-0"
               alt={member.item}
-              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+              onError={(e) => { (e.currentTarget as HTMLImageElement).style.visibility = 'hidden'; }}
+              onLoad={(e) => { (e.currentTarget as HTMLImageElement).style.visibility = 'visible'; }}
             />
           )}
           <select
             value={member.item || ''}
             onChange={(e) => updateMember(member.id, { item: e.target.value })}
             disabled={isGraveyard}
-            className="flex-1 bg-transparent border-none text-zinc-300 text-xs focus:ring-0 focus:outline-none"
+            className="flex-1 bg-transparent border-none text-zinc-200 text-sm font-medium focus:ring-0 focus:outline-none"
+            style={{ colorScheme: 'dark' }}
           >
-            <option value="">No Item Held</option>
+            <option value="" className="bg-zinc-800 text-zinc-400 italic">No Item Held</option>
             {itemsList.map(i => (
-              <option key={i} value={i}>{i}</option>
+              <option key={i} value={i} className="bg-zinc-800 text-zinc-200">{i}</option>
             ))}
           </select>
         </div>
