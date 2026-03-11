@@ -12,8 +12,8 @@ interface NavigationProps {
   setShowChangedOnly: (show: boolean) => void;
   viewMode: ViewMode;
   setViewMode: (mode: ViewMode) => void;
-  activeTab: 'pokedex' | 'locations' | 'teambuilder';
-  setActiveTab: (tab: 'pokedex' | 'locations' | 'teambuilder') => void;
+  activeTab: 'pokedex' | 'locations' | 'teambuilder' | 'trainers';
+  setActiveTab: (tab: 'pokedex' | 'locations' | 'teambuilder' | 'trainers') => void;
   dexMode: 'national' | 'galar';
   setDexMode: (mode: 'national' | 'galar') => void;
 }
@@ -67,6 +67,16 @@ export default function Navigation({
                 }`}
               >
                 Team Builder
+              </button>
+              <button
+                onClick={() => setActiveTab('trainers')}
+                className={`px-6 py-2 rounded-md text-sm font-bold transition-all ${
+                  activeTab === 'trainers' 
+                  ? 'bg-[var(--gold)] text-black shadow-md' 
+                  : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700/50'
+                }`}
+              >
+                Trainers
               </button>
             </div>
           </div>

@@ -6,6 +6,7 @@ import PokemonTable from "@/components/PokemonTable";
 import PokemonDetail from "@/components/PokemonDetail";
 import LocationsView from "@/components/LocationsView";
 import TeamBuilder from "@/components/TeamBuilder";
+import TrainersView from "@/components/TrainersView";
 import { useTeam } from "@/hooks/useTeam";
 import db from "@/data/database.json";
 import galarDexRaw from "@/data/galar_dex.json";
@@ -22,7 +23,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showChangedOnly, setShowChangedOnly] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("augmented");
-  const [activeTab, setActiveTab] = useState<'pokedex' | 'locations' | 'teambuilder'>('pokedex');
+  const [activeTab, setActiveTab] = useState<'pokedex' | 'locations' | 'teambuilder' | 'trainers'>('pokedex');
   const [dexMode, setDexMode] = useState<'national' | 'galar'>('national');
   const [selectedPokemon, setSelectedPokemon] = useState<any>(null);
   
@@ -97,8 +98,10 @@ export default function Home() {
               </>
             ) : activeTab === 'locations' ? (
               <>Showing Wild Encounters. Expand a row to view locations.</>
-            ) : (
+            ) : activeTab === 'teambuilder' ? (
               <>Manage your Pokémon team and view your Box and Graveyard.</>
+            ) : (
+              <>Important Battles in order. <span className="text-yellow-400 font-bold">Level Caps</span> indicate the maximum level you should be for the fight.</>
             )}
           </p>
         </div>
@@ -117,13 +120,21 @@ export default function Home() {
               if (found) setSelectedPokemon(found);
             }} 
           />
-        ) : (
+        ) : activeTab === 'teambuilder' ? (
           <TeamBuilder 
             teamHook={teamHook}
             onSelectPokemon={(name) => {
               const found = Object.values(database).find((p: any) => p.name === name);
               if (found) setSelectedPokemon(found);
             }} 
+          />
+        ) : (
+          <TrainersView 
+            database={database}
+            onSelectPokemon={(name) => {
+              const found = Object.values(database).find((p: any) => p.name === name);
+              if (found) setSelectedPokemon(found);
+            }}
           />
         )}
         

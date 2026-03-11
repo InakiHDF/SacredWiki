@@ -1,0 +1,2891 @@
+[
+  {
+    "name": "Hop - Route 2",
+    "sheet": "Rival Battles",
+    "pokemon": [
+      {
+        "name": "Wooloo",
+        "level": 11,
+        "item": null,
+        "ability": "Fluffy",
+        "nature": "Relaxed",
+        "evs": "20 HP/20 Def",
+        "moves": [
+          "Guard Split",
+          "Tackle",
+          "Defense Curl",
+          "Copycat"
+        ]
+      },
+      {
+        "name": "Rockruff",
+        "level": 11,
+        "item": null,
+        "ability": "Vital Spirit",
+        "nature": "Adamant",
+        "evs": "20 Atk/20 Spe",
+        "moves": [
+          "Rock Throw",
+          "Covet",
+          "Endeavor"
+        ]
+      },
+      {
+        "name": "Fletchling",
+        "level": 11,
+        "item": null,
+        "ability": "Gale Wings",
+        "nature": "Naive",
+        "evs": "30 Atk/30 Spd",
+        "moves": [
+          "Peck",
+          "Growl",
+          "Quick Attack",
+          "Ember"
+        ]
+      },
+      {
+        "name": "Sobble",
+        "level": 12,
+        "item": "Oran Berry",
+        "ability": "Sniper",
+        "nature": "Naive",
+        "evs": "30 SpA/30 Spe",
+        "moves": [
+          "Water Pulse",
+          "Ice Shard",
+          "Water Gun",
+          "Bind"
+        ]
+      }
+    ],
+    "ace_level": 12
+  },
+  {
+    "name": "Hop - Motostoke",
+    "sheet": "Rival Battles",
+    "pokemon": [
+      {
+        "name": "Wooloo",
+        "level": 15,
+        "item": null,
+        "ability": "Fluffy",
+        "nature": "Impish",
+        "evs": "50 HP/50 Def",
+        "moves": [
+          "Guard Split",
+          "Stomp",
+          "Rollout",
+          "Copycat"
+        ]
+      },
+      {
+        "name": "Rockruff",
+        "level": 15,
+        "item": null,
+        "ability": "Steadfast",
+        "nature": "Adamant",
+        "evs": "50 Atk/50 Spe",
+        "moves": [
+          "Rock Throw",
+          "Leer",
+          "Endeavor",
+          "Covet"
+        ]
+      },
+      {
+        "name": "Growlithe",
+        "level": 16,
+        "item": null,
+        "ability": "Intimidate",
+        "nature": "Adamant",
+        "evs": "50 Atk/50 Spd",
+        "moves": [
+          "Flame Wheel",
+          "Howl",
+          "Bite"
+        ]
+      },
+      {
+        "name": "Drizzile",
+        "level": 17,
+        "item": "Oran Berry",
+        "ability": "Sniper",
+        "nature": "Modest",
+        "evs": "50 HP/50 SpA",
+        "moves": [
+          "Water Pulse",
+          "Ice Shard",
+          "Fell Stinger",
+          "Bind"
+        ]
+      }
+    ],
+    "ace_level": 17
+  },
+  {
+    "name": "Bede - Galar Mine",
+    "sheet": "Rival Battles",
+    "pokemon": [
+      {
+        "name": "Solosis",
+        "level": 19,
+        "item": "Light Clay",
+        "ability": "Magic Guard",
+        "nature": "Modest",
+        "evs": "50 HP/50 SpD",
+        "moves": [
+          "Psybeam",
+          "Reflect",
+          "Recover",
+          "Light Screen"
+        ]
+      },
+      {
+        "name": "Gothita",
+        "level": 19,
+        "item": null,
+        "ability": "Shadow Tag",
+        "nature": "Bold",
+        "evs": "50 SpA/50 Spe",
+        "moves": [
+          "Psybeam",
+          "Fake Out",
+          "Tickle",
+          "Torment"
+        ]
+      },
+      {
+        "name": "Espurr",
+        "level": 20,
+        "item": null,
+        "ability": "Own Tempo",
+        "nature": "Modest",
+        "evs": "50 HP/50 SpA",
+        "moves": [
+          "Confusion",
+          "Yawn",
+          "Fake Out",
+          "Disarming Voice"
+        ]
+      },
+      {
+        "name": "Hatenna",
+        "level": 21,
+        "item": "Oran Berry",
+        "ability": "Magic Bounce",
+        "nature": "Modest",
+        "evs": "59 HP/50 SpA",
+        "moves": [
+          "Magical Leaf",
+          "Psybeam",
+          "Nuzzle",
+          "Disarming Voice"
+        ]
+      }
+    ],
+    "ace_level": 21
+  },
+  {
+    "name": "Milo",
+    "sheet": "Gym Leaders",
+    "pokemon": [
+      {
+        "name": "Tangela",
+        "level": 24,
+        "item": "Eviolite",
+        "ability": "Regenerator",
+        "nature": "Bold",
+        "evs": "100 HP/100 Def",
+        "moves": [
+          "Mega Drain",
+          "Grassy Terrain",
+          "Leech Seed",
+          "Ancient Power"
+        ]
+      },
+      {
+        "name": "Cherrim (Overcast)",
+        "level": 24,
+        "item": null,
+        "ability": "Comatose",
+        "nature": "Modest",
+        "evs": "100 HP/SpD 100",
+        "moves": [
+          "Grassy Glide",
+          "Nature Power",
+          "Grassy Terrain",
+          "Magical Leaf"
+        ]
+      },
+      {
+        "name": "Dubwool",
+        "level": 25,
+        "item": null,
+        "ability": "Fluffy",
+        "nature": "Timid",
+        "evs": "HP 100/Spe 100",
+        "moves": [
+          "Grassy Glide",
+          "Thunder Wave",
+          "Headbutt",
+          "Flame Charge"
+        ]
+      },
+      {
+        "name": "Lombre",
+        "level": 26,
+        "item": null,
+        "ability": "Own Tempo",
+        "nature": "Relaxed",
+        "evs": "HP 100/Def 100",
+        "moves": [
+          "Teeter Dance",
+          "Grassy Glide",
+          "Leech Seed",
+          "Bubble Beam"
+        ]
+      },
+      {
+        "name": "Eldegoss-Dmax",
+        "level": 27,
+        "item": "Sitrus Berry",
+        "ability": "Cotton Down",
+        "nature": "Calm",
+        "evs": "HP 100/SpD 100",
+        "moves": [
+          "Grassy Glide",
+          "Leaf Tornado",
+          "Round",
+          "Leech Seed"
+        ]
+      }
+    ],
+    "ace_level": 27
+  },
+  {
+    "name": "Double Battle",
+    "sheet": "Rival Battles",
+    "pokemon": [
+      {
+        "name": "Dubwool",
+        "level": 27,
+        "item": "Chesto Berry",
+        "ability": "Fluffy",
+        "nature": "Impish",
+        "evs": "50 HP/50 Def",
+        "moves": [
+          "Rest",
+          "Double Kick",
+          "Headbutt",
+          "Flame Charge"
+        ]
+      },
+      {
+        "name": "Growlithe",
+        "level": 27,
+        "item": null,
+        "ability": "Intimidate",
+        "nature": "Lonely",
+        "evs": "50 Atk/50 Spe",
+        "moves": [
+          "Safeguard",
+          "Snarl",
+          "Double Kick",
+          "Fire Fang"
+        ]
+      },
+      {
+        "name": "Eevee",
+        "level": 28,
+        "item": "Eviolite",
+        "ability": "Genetic Instability",
+        "nature": "Rash",
+        "evs": "50 HP/50 SpA",
+        "moves": [
+          "Bullet Seed",
+          "Icy Wind",
+          "Fire Spin",
+          "Snarl"
+        ]
+      },
+      {
+        "name": "Lycanroc Day",
+        "level": 28,
+        "item": null,
+        "ability": "Infiltrator",
+        "nature": "Adamant",
+        "evs": "50 Atk/50 Spe",
+        "moves": [
+          "Accelerock",
+          "Sucker Punch",
+          "Quick Guard",
+          "Covet"
+        ]
+      },
+      {
+        "name": "Drizzile",
+        "level": 29,
+        "item": "Scope Lens",
+        "ability": "Sniper",
+        "nature": "Adamant",
+        "evs": "50 Atk/50 Spe",
+        "moves": [
+          "Aqua Jet",
+          "Sucker Punch",
+          "Fell Stinger",
+          "Ice Shard"
+        ]
+      }
+    ],
+    "ace_level": 29
+  },
+  {
+    "name": "Nessa",
+    "sheet": "Gym Leaders",
+    "pokemon": [
+      {
+        "name": "Pelipper",
+        "level": 31,
+        "item": "Damp Rock",
+        "ability": "Drizzle",
+        "nature": "Calm",
+        "evs": "100 HP/ SpD 100",
+        "moves": [
+          "Scald",
+          "Roost",
+          "Air Slash",
+          "U-Turn"
+        ]
+      },
+      {
+        "name": "Barraskewda",
+        "level": 31,
+        "item": null,
+        "ability": "Swift Swim",
+        "nature": "Adamant",
+        "evs": "100 Atk/100 Spe",
+        "moves": [
+          "Scale Shot",
+          "Flip Turn",
+          "Throat Chop",
+          "Aqua Jet"
+        ]
+      },
+      {
+        "name": "Whiscash",
+        "level": 32,
+        "item": null,
+        "ability": "Hydration",
+        "nature": "Impish",
+        "evs": "100 HP/100 Atk",
+        "moves": [
+          "Dragon Dance",
+          "Stmping Tantrum",
+          "Aqua Tail",
+          "Zen Headbutt"
+        ]
+      },
+      {
+        "name": "Tentacruel",
+        "level": 32,
+        "item": null,
+        "ability": "Rain Dish",
+        "nature": "Timid",
+        "evs": "100 HP/100 SpD",
+        "moves": [
+          "Scald",
+          "Rain Dance",
+          "Venoshock",
+          "Aqua Ring"
+        ]
+      },
+      {
+        "name": "Seaking",
+        "level": 33,
+        "item": null,
+        "ability": "Lightning Rod",
+        "nature": "Adamant",
+        "evs": "100 Atk/100 Spe",
+        "moves": [
+          "Aqua Jet",
+          "Flip Turn",
+          "Drill Run",
+          "Bounce"
+        ]
+      },
+      {
+        "name": "Drednaw-Dmax",
+        "level": 34,
+        "item": "Sitrus Berry",
+        "ability": "Swift Swim",
+        "nature": "Jolly",
+        "evs": "100 Atk/100 Spe",
+        "moves": [
+          "Razor Shell",
+          "Stmping Tantrum",
+          "Rock Tomb",
+          "Skitter Smack"
+        ]
+      }
+    ],
+    "ace_level": 34
+  },
+  {
+    "name": "Bede - Galar Mine No. 2",
+    "sheet": "Rival Battles",
+    "pokemon": [
+      {
+        "name": "Duosion",
+        "level": 34,
+        "item": "Light Clay",
+        "ability": "Magic Guard",
+        "nature": "Modest",
+        "evs": "100 HP/100 SpA",
+        "moves": [
+          "Reflect",
+          "Recover",
+          "Psyshock",
+          "Light Screen"
+        ]
+      },
+      {
+        "name": "Gothorita",
+        "level": 34,
+        "item": "Choice Specs",
+        "ability": "Shadow Tag",
+        "nature": "Bold",
+        "evs": "100 Def/100 SpD",
+        "moves": [
+          "Trick",
+          "Psybeam",
+          "Psyshock",
+          "Payback"
+        ]
+      },
+      {
+        "name": "Ponyta",
+        "level": 35,
+        "item": "Colbur Berry",
+        "ability": "Pastel Veil",
+        "nature": "Rash",
+        "evs": "100 Atk/100 Spe",
+        "moves": [
+          "Double Kick",
+          "Morning Sun",
+          "Zen Headbutt",
+          "Stomp"
+        ]
+      },
+      {
+        "name": "Elgyem",
+        "level": 35,
+        "item": "Eviolite",
+        "ability": "Synchronize",
+        "nature": "Modest",
+        "evs": "100 SpA/100 SpD",
+        "moves": [
+          "Wonder Room",
+          "Psybeam",
+          "Thunder Wave",
+          "Disable"
+        ]
+      },
+      {
+        "name": "Swoobat",
+        "level": 35,
+        "item": null,
+        "ability": "Soul Heart",
+        "nature": "Modest",
+        "evs": "100 SpA/100 Spe",
+        "moves": [
+          "Psybeam",
+          "Signal Beam",
+          "Air Slash",
+          "Roost"
+        ]
+      },
+      {
+        "name": "Hattrem",
+        "level": 36,
+        "item": "Sitrus Berry",
+        "ability": "Magic Bounce",
+        "nature": "Modest",
+        "evs": "100 HP/100 SpA",
+        "moves": [
+          "Magical Leaf",
+          "Dazzling Gleam",
+          "Nuzzle",
+          "Psybeam"
+        ]
+      }
+    ],
+    "ace_level": 36
+  },
+  {
+    "name": "Marnie - Motostoke Budew Drop Inn",
+    "sheet": "Rival Battles",
+    "pokemon": [
+      {
+        "name": "Sableye",
+        "level": 39,
+        "item": "Leftovers",
+        "ability": "Magic Bounce",
+        "nature": "Impish",
+        "evs": "100 HP/100 SpD",
+        "moves": [
+          "Will-O-Wisp",
+          "Fake Out",
+          "Shadow Claw",
+          "Sucker Punch"
+        ]
+      },
+      {
+        "name": "Scrafty",
+        "level": 39,
+        "item": "Lum Berry",
+        "ability": "Moxie",
+        "nature": "Adamant",
+        "evs": "100 Atk/100 Spe",
+        "moves": [
+          "Poison Jab",
+          "Knock Off",
+          "Brick Break",
+          "Fake Out"
+        ]
+      },
+      {
+        "name": "Zoroark",
+        "level": 40,
+        "item": "Chople Berry",
+        "ability": "Illusion",
+        "nature": "Naive",
+        "evs": "100 Atk/100 Spe",
+        "moves": [
+          "U-turn",
+          "Sludge Bomb",
+          "Skitter Smack",
+          "Knock Off"
+        ]
+      },
+      {
+        "name": "Absol",
+        "level": 40,
+        "item": "Life Orb",
+        "ability": "Justified",
+        "nature": "Jolly",
+        "evs": "100 Atk/100 Spe",
+        "moves": [
+          "Curse",
+          "Slash",
+          "Knock Off",
+          "Sucker Punch"
+        ]
+      },
+      {
+        "name": "Morgrem",
+        "level": 41,
+        "item": "Eviolite",
+        "ability": "Prankster",
+        "nature": "Relaxed",
+        "evs": "100 HP/100 Def",
+        "moves": [
+          "Thunder Wave",
+          "Swagger",
+          "False Surrender",
+          "Reflect"
+        ]
+      },
+      {
+        "name": "Morpeko",
+        "level": 42,
+        "item": "Sitrus Berry",
+        "ability": "Hunger Switch",
+        "nature": "Jolly",
+        "evs": "100 Atk/100 Spe",
+        "moves": [
+          "Fake Out",
+          "Thunder Punch",
+          "Parting Shot",
+          "Brick Break"
+        ]
+      }
+    ],
+    "ace_level": 42
+  },
+  {
+    "name": "Kabu",
+    "sheet": "Gym Leaders",
+    "pokemon": [
+      {
+        "name": "Ninetales",
+        "level": 40,
+        "item": "Heat Rock",
+        "ability": "Drought",
+        "nature": "Bold",
+        "evs": "100 HP/100 Def",
+        "moves": [
+          "Will-O-Wisp",
+          "Burning Jealousy",
+          "Scorching Sands",
+          "Solar Beam"
+        ]
+      },
+      {
+        "name": "Arcanine",
+        "level": 40,
+        "item": "Life Orb",
+        "ability": "Intimidate",
+        "nature": "Jolly",
+        "evs": "100 Atk/100 Spe",
+        "moves": [
+          "Will-O-Wisp",
+          "Flame Wheel",
+          "Reversal",
+          "Extreme Speed"
+        ]
+      },
+      {
+        "name": "Heatmor",
+        "level": 41,
+        "item": "Salac Berry",
+        "ability": "Gluttony",
+        "nature": "Adamant",
+        "evs": "100 HP/100 Atk",
+        "moves": [
+          "Sucker Punch",
+          "Hone Claw",
+          "Drain Punch",
+          "Fire Lash"
+        ]
+      },
+      {
+        "name": "Blaziken",
+        "level": 41,
+        "item": "Focus Sash",
+        "ability": "Speed Boost",
+        "nature": "Adamant",
+        "evs": "100 HP/100 SpA",
+        "moves": [
+          "Reversal",
+          "Thunder Punch",
+          "Protect",
+          "Blaze Kick"
+        ]
+      },
+      {
+        "name": "Torkoal",
+        "level": 42,
+        "item": "Leftovers",
+        "ability": "Drought",
+        "nature": "Bold",
+        "evs": "100 HP/100 Def",
+        "moves": [
+          "Yawn",
+          "Solar Beam",
+          "Burning Jealousy",
+          "Rapid Spin"
+        ]
+      },
+      {
+        "name": "Centiskorch-G",
+        "level": 43,
+        "item": "White Smoke",
+        "ability": "Charti Berry",
+        "nature": "Impish",
+        "evs": "Atk 100/Def 100",
+        "moves": [
+          "Flame Wheel",
+          "Power Whip",
+          "Bug Bite",
+          "Thunder Fang"
+        ]
+      }
+    ],
+    "ace_level": 43
+  },
+  {
+    "name": "Hop - Stow-on-Side",
+    "sheet": "Rival Battles",
+    "pokemon": [
+      {
+        "name": "Kangaskhan",
+        "level": 45,
+        "item": "Life Orb",
+        "ability": "Parental Bond",
+        "nature": "Adamant",
+        "evs": "125 HP/125 Atk",
+        "moves": [
+          "Fake Out",
+          "Power-Up Punch",
+          "Sucker Punch",
+          "Headbutt"
+        ]
+      },
+      {
+        "name": "Maractus",
+        "level": 45,
+        "item": "Focus Sash",
+        "ability": "Dancer",
+        "nature": "Adamant",
+        "evs": "125 Atk/125 Spe",
+        "moves": [
+          "Spiky Shield",
+          "Fire Punch",
+          "Power-Up Punch",
+          "Seed Bomb"
+        ]
+      },
+      {
+        "name": "Torkoal",
+        "level": 46,
+        "item": "Heat Rock",
+        "ability": "Drought",
+        "nature": "Relaxed",
+        "evs": "125 HP/125 Def",
+        "moves": [
+          "Scorching Sands",
+          "Solar Beam",
+          "Burning Jealousy",
+          "Curse"
+        ]
+      },
+      {
+        "name": "Doublade",
+        "level": 46,
+        "item": "Eviolite",
+        "ability": "No Guard",
+        "nature": "Impish",
+        "evs": "125 HP/125 Def",
+        "moves": [
+          "Retaliate",
+          "Brick Break",
+          "Iron Head",
+          "Shadow Sneak"
+        ]
+      },
+      {
+        "name": "Flygon",
+        "level": 46,
+        "item": "Leftovers",
+        "ability": "Levitate",
+        "nature": "Modest",
+        "evs": "125 HP/125 Spa",
+        "moves": [
+          "Dragon Breath",
+          "Scorching Sands",
+          "Flamethrower",
+          "U-turn"
+        ]
+      },
+      {
+        "name": "Inteleon",
+        "level": 47,
+        "item": "Scope Lens",
+        "ability": "Sniper",
+        "nature": "Modest",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Snipe Shot",
+          "Mud Shot",
+          "Weather Ball",
+          "Air Slash"
+        ]
+      }
+    ],
+    "ace_level": 47
+  },
+  {
+    "name": "Bede - Stow-on-Side",
+    "sheet": "Rival Battles",
+    "pokemon": [
+      {
+        "name": "Reuniclus",
+        "level": 49,
+        "item": "Light Clay",
+        "ability": "Magic Guard",
+        "nature": "Modest",
+        "evs": "252 HP/252 SpA",
+        "moves": [
+          "Light Screen",
+          "Reflect",
+          "Expanding Force",
+          "Psychic Terrain"
+        ]
+      },
+      {
+        "name": "Gothitelle",
+        "level": 49,
+        "item": "Leftovers",
+        "ability": "Shadow Tag",
+        "nature": "Bold",
+        "evs": "252 Def/252 SpD",
+        "moves": [
+          "Trick Room",
+          "Thunder Wave",
+          "Psychic",
+          "Energy Ball"
+        ]
+      },
+      {
+        "name": "G-Rapidash",
+        "level": 50,
+        "item": "Room Service",
+        "ability": "Pixilate",
+        "nature": "Brave",
+        "evs": "252 HP/252 Atk",
+        "moves": [
+          "Body Slam",
+          "Psycho Cut",
+          "Drill Run",
+          "Throat Chop"
+        ]
+      },
+      {
+        "name": "Beheeyem",
+        "level": 50,
+        "item": "Petaya Berry",
+        "ability": "Synchronize",
+        "nature": "Modest",
+        "evs": "252 HP/252 SpA",
+        "moves": [
+          "Destiny Bond",
+          "Recover",
+          "Trick Room",
+          "Psychic"
+        ]
+      },
+      {
+        "name": "Copperajah",
+        "level": 51,
+        "item": "Assault Vest",
+        "ability": "Sheer Force",
+        "nature": "Adamant",
+        "evs": "252 HP/252 Atk",
+        "moves": [
+          "Heat Crash",
+          "Power Whip",
+          "Heavy Slam",
+          "High Horsepower"
+        ]
+      },
+      {
+        "name": "Hatterene",
+        "level": 52,
+        "item": "Sitrus Berry",
+        "ability": "Magic Bounce",
+        "nature": "Modest",
+        "evs": "252 HP/252 SpA",
+        "moves": [
+          "Psychic",
+          "Mystical Fire",
+          "Dazzling Gleam",
+          "Nuzzle"
+        ]
+      }
+    ],
+    "ace_level": 52
+  },
+  {
+    "name": "Opal",
+    "sheet": "Gym Leaders",
+    "pokemon": [
+      {
+        "name": "Galarian Weezing",
+        "level": 55,
+        "item": "Terrain Extender",
+        "ability": "Misty Surge",
+        "nature": "Timid",
+        "evs": "252 HP/252 SpA",
+        "moves": [
+          "Strange Steam",
+          "Flamethrower",
+          "Sludge Bomb",
+          "Toxic Spikes"
+        ]
+      },
+      {
+        "name": "Mawile",
+        "level": 55,
+        "item": "Life Orb",
+        "ability": "Huge Power",
+        "nature": "Adamant",
+        "evs": "4 HP/252 Atk/252 Def",
+        "moves": [
+          "Swords Dance",
+          "Ice Punch",
+          "Play Rough",
+          "Iron Head"
+        ]
+      },
+      {
+        "name": "Togekiss",
+        "level": 56,
+        "item": "King's Rock",
+        "ability": "Serene Grace",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Air Slash",
+          "Aura Sphere",
+          "Extrasensory",
+          "Dazzling Gleam"
+        ]
+      },
+      {
+        "name": "Altaria",
+        "level": 56,
+        "item": "Heavy-Duty Boot",
+        "ability": "Cloud Nine",
+        "nature": "Bold",
+        "evs": "252 HP/252 SpA",
+        "moves": [
+          "Moonblast",
+          "Roost",
+          "Earthquake",
+          "Dragon Pulse"
+        ]
+      },
+      {
+        "name": "Comfey",
+        "level": 57,
+        "item": "Leftovers",
+        "ability": "Triage",
+        "nature": "Calm",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Draining Kiss",
+          "Giga Drain",
+          "Calm Mind",
+          "Stored Power"
+        ]
+      },
+      {
+        "name": "Alcremie-Gmax",
+        "level": 58,
+        "item": "Sitrus Berry",
+        "ability": "Sweet Veil",
+        "nature": "Bold",
+        "evs": "252 HP/252 Spe",
+        "moves": [
+          "Dazzling Gleam",
+          "Psyshock",
+          "Mystical Fire",
+          "Recover"
+        ]
+      }
+    ],
+    "ace_level": 58
+  },
+  {
+    "name": "Hop - Hammerlocke",
+    "sheet": "Rival Battles",
+    "pokemon": [
+      {
+        "name": "Skarmory",
+        "level": 56,
+        "item": "Rocky Helmet",
+        "ability": "Sturdy",
+        "nature": "Impish",
+        "evs": "248 HP/252 Def/8 Spe",
+        "moves": [
+          "Roost",
+          "Stealth Rock",
+          "Toxic",
+          "Body Press"
+        ]
+      },
+      {
+        "name": "Clefable",
+        "level": 56,
+        "item": "Leftovers",
+        "ability": "Unaware",
+        "nature": "Bold",
+        "evs": "252 HP/252 Def/4 SpD",
+        "moves": [
+          "Moonblast",
+          "Wish",
+          "Teleport",
+          "Calm Mind"
+        ]
+      },
+      {
+        "name": "Sceptile",
+        "level": 57,
+        "item": "Focus Sash",
+        "ability": "Unburden",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Energy Ball",
+          "Leech Seed",
+          "Focus Blast",
+          "Dragon Pulse"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "level": 57,
+        "item": "Heavy-Duty",
+        "ability": "Intimidate",
+        "nature": "Careful",
+        "evs": "252HP/124 Def/132 SpD",
+        "moves": [
+          "Parting Shot",
+          "Fake Out",
+          "Darkest Lariat",
+          "Flare Blitz"
+        ]
+      },
+      {
+        "name": "Haxorous",
+        "level": 58,
+        "item": "Life Orb",
+        "ability": "Mold Breaker",
+        "nature": "Adamant",
+        "evs": "4 HP/252 Atk/252 Spe",
+        "moves": [
+          "Close Combat",
+          "Poison Jab",
+          "Swords Dance",
+          "Scale Shot"
+        ]
+      },
+      {
+        "name": "Inteleon",
+        "level": 59,
+        "item": "Scope Lens",
+        "ability": "Sniper",
+        "nature": "Timid",
+        "evs": "252 SpA/4 SpD/252 Spe",
+        "moves": [
+          "Focus Energy",
+          "Snipe Shot",
+          "Ice Beam",
+          "Dark Pulse"
+        ]
+      }
+    ],
+    "ace_level": 59
+  },
+  {
+    "name": "Hop - Circhester",
+    "sheet": "Rival Battles",
+    "pokemon": [
+      {
+        "name": "Dubwool",
+        "level": 67,
+        "item": "Leftovers",
+        "ability": "Fluffy",
+        "nature": "Impish",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "Double-Edge",
+          "Flame Charge",
+          "Cotton Guard",
+          "Body Press"
+        ]
+      },
+      {
+        "name": "Skarmory",
+        "level": 67,
+        "item": "Rocky Helmet",
+        "ability": "Sturdy",
+        "nature": "Jolly",
+        "evs": "252 HP/252 Def/4 Spe",
+        "moves": [
+          "Spikes",
+          "Roost",
+          "Body Press",
+          "Brave Bird"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "level": 68,
+        "item": "Heavy-Duty",
+        "ability": "Intimidate",
+        "nature": "Sassy",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Parting Shot",
+          "Knock Off",
+          "Fake Out",
+          "Flare Blitz"
+        ]
+      },
+      {
+        "name": "Maractus",
+        "level": 68,
+        "item": "Life Orb",
+        "ability": "Dancer",
+        "nature": "Adamant",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Spiky Shield",
+          "Sucker Punch",
+          "Drill Run",
+          "Wood Hammer"
+        ]
+      },
+      {
+        "name": "Flygon",
+        "level": 69,
+        "item": "Yache Berry",
+        "ability": "Tinted Lens",
+        "nature": "Modest",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Boomburst",
+          "Scorching Sands",
+          "Heat Wave",
+          "Dragon Pulse"
+        ]
+      },
+      {
+        "name": "Inteleon",
+        "level": 70,
+        "item": "Scope Lens",
+        "ability": "Sniper",
+        "nature": "Timid",
+        "evs": "252 SpA/4 SpD/252 Spe",
+        "moves": [
+          "Focus Energy",
+          "Snipe Shot",
+          "Ice Beam",
+          "Dark Pulse"
+        ]
+      }
+    ],
+    "ace_level": 70
+  },
+  {
+    "name": "Gordie - Double Battle",
+    "sheet": "Gym Leaders",
+    "pokemon": [
+      {
+        "name": "Tyranitar",
+        "level": 67,
+        "item": "Smooth Rock",
+        "ability": "Sand Stream",
+        "nature": "Brave",
+        "evs": "252 HP/252 Atk",
+        "moves": [
+          "Rock Slide",
+          "Protect",
+          "Ice Punch",
+          "Lash Out"
+        ]
+      },
+      {
+        "name": "Stonjourner",
+        "level": 67,
+        "item": "Sitrus Berry",
+        "ability": "Power Spot",
+        "nature": "Sassy",
+        "evs": "252 Def/252 SpD",
+        "moves": [
+          "Trop Kick",
+          "Body Press",
+          "Trick Room",
+          "Stone Edge"
+        ]
+      },
+      {
+        "name": "Coalossal-Gmax",
+        "level": 70,
+        "item": "Weakness Policy",
+        "ability": "Steam Engine",
+        "nature": "Modest",
+        "evs": "252 HP/252 SpA",
+        "moves": [
+          "Heat Wave",
+          "Meteor Beam",
+          "Solar Beam",
+          "Earth Power"
+        ]
+      },
+      {
+        "name": "Relicanth",
+        "level": 68,
+        "item": "Rindo Berry",
+        "ability": "Sturdy",
+        "nature": "Relaxed",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "Liquidation",
+          "Rock Slide",
+          "Zen Headbutt",
+          "Body Press"
+        ]
+      },
+      {
+        "name": "Shuckle",
+        "level": 68,
+        "item": "Leftovers",
+        "ability": "Contrary",
+        "nature": "Sassy",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Helping Hand",
+          "Toxic",
+          "Knock Off",
+          "Shell Smash"
+        ]
+      },
+      {
+        "name": "Solrock",
+        "level": 69,
+        "item": "Focus Sash",
+        "ability": "Levitate",
+        "nature": "Impish",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Photon Geyser",
+          "Sunsteel Strike",
+          "Trick Room",
+          "Sacred Fire"
+        ]
+      }
+    ],
+    "ace_level": 70
+  },
+  {
+    "name": "Melony - Double Battle",
+    "sheet": "Gym Leaders",
+    "pokemon": [
+      {
+        "name": "Vanilluxe",
+        "level": 67,
+        "item": "Icy Rock",
+        "ability": "Snow Warning",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Taunt",
+          "Blizzard",
+          "Aurora Veil",
+          "Freeze-Dry"
+        ]
+      },
+      {
+        "name": "Mr. Rime",
+        "level": 67,
+        "item": "Leftovers",
+        "ability": "Ice Body",
+        "nature": "Bold",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "Psychic",
+          "Blizzard",
+          "Trick Room",
+          "Ally Switch"
+        ]
+      },
+      {
+        "name": "Arctovish",
+        "level": 68,
+        "item": "Life Orb",
+        "ability": "Ice Body",
+        "nature": "Adamant",
+        "evs": "252 HP/252 Atk",
+        "moves": [
+          "Icicle Crash",
+          "Iron Head",
+          "Fishious Rend",
+          "Psychic Fangs"
+        ]
+      },
+      {
+        "name": "Lapras-Gmax",
+        "level": 70,
+        "item": "Light Clay",
+        "ability": "Shell Armor",
+        "nature": "Modest",
+        "evs": "156 HP/52 Def/252 SpA/20 SpD/28 Spe",
+        "moves": [
+          "Hydro Pump",
+          "Perish Song",
+          "Blizzard",
+          "Psychic"
+        ]
+      },
+      {
+        "name": "Jynx",
+        "level": 68,
+        "item": "Focus Sash",
+        "ability": "Oblivious",
+        "nature": "Mild",
+        "evs": "4HP/252SpA/4SpD/244 Spe",
+        "moves": [
+          "Fake Out",
+          "Blizzard",
+          "Trick Room",
+          "Expanding Force"
+        ]
+      },
+      {
+        "name": "Wailren",
+        "level": 68,
+        "item": "Sitrus Berry",
+        "ability": "Ice Body",
+        "nature": "Sassy",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Blizzard",
+          "Hail",
+          "Surf",
+          "Earthquake"
+        ]
+      }
+    ],
+    "ace_level": 70
+  },
+  {
+    "name": "Marnie - Route 9",
+    "sheet": "Rival Battles",
+    "pokemon": [
+      {
+        "name": "Sableye",
+        "level": 70,
+        "item": "Rocky Helmet",
+        "ability": "Magic Bounce",
+        "nature": "Careful",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Recover",
+          "Will-O-Wisp",
+          "Knock Off",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Zoroark",
+        "level": 70,
+        "item": "Life Orb",
+        "ability": "Illusion",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Sludge Bomb",
+          "Dark Pulse",
+          "Flamethrower",
+          "Nasty Plot"
+        ]
+      },
+      {
+        "name": "Scrafty",
+        "level": 71,
+        "item": "Leftovers",
+        "ability": "Shed Skin",
+        "nature": "Careful",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Bulk Up",
+          "Rest",
+          "Drain Punch",
+          "Knock Off"
+        ]
+      },
+      {
+        "name": "Absol",
+        "level": 71,
+        "item": "Focus Sash",
+        "ability": "Magic Bounce",
+        "nature": "Adamant",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Swords Dance",
+          "Knock Off",
+          "Play Rough",
+          "Sucker Punch"
+        ]
+      },
+      {
+        "name": "Grimmsnarl",
+        "level": 72,
+        "item": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Calm",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Reflect",
+          "Light Screen",
+          "Spirit Break",
+          "Taunt"
+        ]
+      },
+      {
+        "name": "Morpeko",
+        "level": 73,
+        "item": "Sitrus Bery",
+        "ability": "Hunger Switch",
+        "nature": "Jolly",
+        "evs": "252Atk/252 Spe",
+        "moves": [
+          "Aura Wheel",
+          "Psychic Fangs",
+          "Volt Tackle",
+          "Crunch"
+        ]
+      }
+    ],
+    "ace_level": 73
+  },
+  {
+    "name": "Piers",
+    "sheet": "Gym Leaders",
+    "pokemon": [
+      {
+        "name": "Krookodile",
+        "level": 72,
+        "item": "Chople Berry",
+        "ability": "Intimidate",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Knock Off",
+          "Earthquake",
+          "Close Combat",
+          "Stealth Rock"
+        ]
+      },
+      {
+        "name": "Malamar",
+        "level": 72,
+        "item": "Leftovers",
+        "ability": "Contrary",
+        "nature": "Careful",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Knock Off",
+          "Superpower",
+          "Liquidation",
+          "Psycho Cut"
+        ]
+      },
+      {
+        "name": "Rillaboom",
+        "level": 73,
+        "item": "Life Orb",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Drum Beating",
+          "Grassy Glide",
+          "Knock Off",
+          "U-turn"
+        ]
+      },
+      {
+        "name": "Noivern",
+        "level": 73,
+        "item": "Heavy-Duty",
+        "ability": "Infiltrator",
+        "nature": "Timid",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "Hurricane",
+          "Boomburst",
+          "Draco Meter",
+          "U-turn"
+        ]
+      },
+      {
+        "name": "Toxtricity-Lowkey",
+        "level": 74,
+        "item": "Throat Spray",
+        "ability": "Punk Rock",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Overdrive",
+          "Boomburst",
+          "Volt Switch",
+          "Sludge Wave"
+        ]
+      },
+      {
+        "name": "Obstagoon",
+        "level": 75,
+        "item": "Flame Orb",
+        "ability": "Guts",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Knock Off",
+          "Facade",
+          "Close Combat",
+          "Obstruct"
+        ]
+      }
+    ],
+    "ace_level": 75
+  },
+  {
+    "name": "Raihan - Double Battle",
+    "sheet": "Gym Leaders",
+    "pokemon": [
+      {
+        "name": "Hippowdown",
+        "level": 76,
+        "item": "Smooth Rock",
+        "ability": "Sand Stream",
+        "nature": "Impish",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Yawn",
+          "High Horsepower",
+          "Slack Off",
+          "Heavy Slam"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "level": 76,
+        "item": "Life Orb",
+        "ability": "Sand Force",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Rock Slide",
+          "Stomping Tantrum",
+          "Iron Head",
+          "Breaking Swipe"
+        ]
+      },
+      {
+        "name": "Zygarde 10%",
+        "level": 77,
+        "item": "Focus Sash",
+        "ability": "Aura Break",
+        "nature": "Adamant",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Breaking Swipe",
+          "Thousand Arrows",
+          "Thousand Waves",
+          "Reverasl"
+        ]
+      },
+      {
+        "name": "Duraladon-Gmx",
+        "level": 79,
+        "item": "Assault Vest",
+        "ability": "Power of Alchemy",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Steel Beam",
+          "Draco Meteor",
+          "Protect",
+          "Thunderbolt"
+        ]
+      },
+      {
+        "name": "Onix",
+        "level": 77,
+        "item": "Eviolite",
+        "ability": "Rock Head",
+        "nature": "Jolly",
+        "evs": "124 HP/252 Atk/126 Spe",
+        "moves": [
+          "Dragon Hammer",
+          "Head Smash",
+          "Dragon Dance",
+          "High Horsepower"
+        ]
+      },
+      {
+        "name": "Dragonite",
+        "level": 78,
+        "item": "Safety Goggles",
+        "ability": "Multiscale",
+        "nature": "Adamant",
+        "evs": "140 HP/252 Atk/108 Spe",
+        "moves": [
+          "Sandstorm",
+          "Fire Punch",
+          "Extreme Speed",
+          "Dragon Claw"
+        ]
+      }
+    ],
+    "ace_level": 79
+  },
+  {
+    "name": "Marnie",
+    "sheet": "Champions Cup",
+    "pokemon": [
+      {
+        "name": "Sableye",
+        "level": 81,
+        "item": "Rocky Helmet",
+        "ability": "Magic Bounce",
+        "nature": "Careful",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Recover",
+          "Will-O-Wisp",
+          "Knock Off",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Zoroak",
+        "level": 81,
+        "item": "Life Orb",
+        "ability": "Illusion",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Sludge Bomb",
+          "Dark Pulse",
+          "Flamethrower",
+          "Nasty Plot"
+        ]
+      },
+      {
+        "name": "Grimmsnarl-Gmax",
+        "level": 83,
+        "item": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Careful",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Spirit Break",
+          "Darkest Lariat",
+          "Reflect",
+          "Light Screen"
+        ]
+      },
+      {
+        "name": "Scrafty",
+        "level": 82,
+        "item": "Leftovers",
+        "ability": "Shed Skin",
+        "nature": "Careful",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Bulk Up",
+          "Rest",
+          "Drain Punch",
+          "Knock Off"
+        ]
+      },
+      {
+        "name": "Absol",
+        "level": 82,
+        "item": "Focus Sash",
+        "ability": "Magic Bounce",
+        "nature": "Adamant",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Swords Dance",
+          "Knock Off",
+          "Play Rough",
+          "Sucker Punch"
+        ]
+      },
+      {
+        "name": "Morpeko",
+        "level": 84,
+        "item": "Sitrus Berry",
+        "ability": "Hunger Switch",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Aura Wheel",
+          "Psychic Fangs",
+          "Volt Tackle",
+          "Crunch"
+        ]
+      }
+    ],
+    "ace_level": 84
+  },
+  {
+    "name": "Hop - If you choose Grookey",
+    "sheet": "Champions Cup",
+    "pokemon": [
+      {
+        "name": "Skarmory",
+        "level": 81,
+        "item": "Rocky Helmet",
+        "ability": "Sturdy",
+        "nature": "Jolly",
+        "evs": "252 HP/252 Def/4 Spe",
+        "moves": [
+          "Stealth Rock",
+          "Roost",
+          "Iron Head",
+          "Brave Bird"
+        ]
+      },
+      {
+        "name": "Dubwool",
+        "level": 81,
+        "item": "Leftovers",
+        "ability": "Fluffy",
+        "nature": "Impish",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "Double-Edge",
+          "Flame Charge",
+          "Cotton Guard",
+          "Body Press"
+        ]
+      },
+      {
+        "name": "Inteleon-Gmax",
+        "level": 84,
+        "item": "Scope Lens",
+        "ability": "Sniper",
+        "nature": "Timid",
+        "evs": "252 SpA/4 SpD/252 Spe",
+        "moves": [
+          "Focus Energy",
+          "Snipe Shot",
+          "Ice Beam",
+          "Dark Pulse"
+        ]
+      },
+      {
+        "name": "Maractus",
+        "level": 82,
+        "item": "Life Orb",
+        "ability": "Dancer",
+        "nature": "Adamant",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Spiky Shield",
+          "Sucker Punch",
+          "Drill Run",
+          "Wood Hammer"
+        ]
+      },
+      {
+        "name": "Flygon",
+        "level": 82,
+        "item": "Yache Berry",
+        "ability": "Compound Eyes",
+        "nature": "Modest",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "U-turn",
+          "Scorching Sands",
+          "Heat Wave",
+          "Dragon Pulse"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "level": 83,
+        "item": "Heavy-Duty Bts",
+        "ability": "Intimidate",
+        "nature": "Sassy",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Parting Shot",
+          "Knock Off",
+          "Fake Out",
+          "Flare Blitz"
+        ]
+      }
+    ],
+    "ace_level": 84
+  },
+  {
+    "name": "Hop - If you choose Scorbunny",
+    "sheet": "Champions Cup",
+    "pokemon": [
+      {
+        "name": "Skarmory",
+        "level": 81,
+        "item": "Rocky Helmet",
+        "ability": "Sturdy",
+        "nature": "Jolly",
+        "evs": "252 HP/252 Def/4 Spe",
+        "moves": [
+          "Stealth Rock",
+          "Roost",
+          "Iron Head",
+          "Brave Bird"
+        ]
+      },
+      {
+        "name": "Dubwool",
+        "level": 81,
+        "item": "Leftovers",
+        "ability": "Fluffy",
+        "nature": "Impish",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "Double-Edge",
+          "Flame Charge",
+          "Cotton Guard",
+          "Body Press"
+        ]
+      },
+      {
+        "name": "Rillaboom-Gmax",
+        "level": 84,
+        "item": "Terrain Extender",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "evs": "252 Atk/4 SpD/252 Spe",
+        "moves": [
+          "Grassy Glide",
+          "Knock Off",
+          "U-turn",
+          "Drain Punch"
+        ]
+      },
+      {
+        "name": "Arcanine",
+        "level": 82,
+        "item": "Life Orb",
+        "ability": "Intimidate",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Flare Blitz",
+          "Thunder Fang",
+          "Extreme Speed",
+          "Ice Fang"
+        ]
+      },
+      {
+        "name": "Flygon",
+        "level": 82,
+        "item": "Yache Berry",
+        "ability": "Compound Eyes",
+        "nature": "Modest",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "U-turn",
+          "Scorching Sands",
+          "Heat Wave",
+          "Dragon Pulse"
+        ]
+      },
+      {
+        "name": "Primarina",
+        "level": 83,
+        "item": "Heavy-Duty Bts",
+        "ability": "Torrent",
+        "nature": "Bold",
+        "evs": "248 HP/252 SpA/8 Spe",
+        "moves": [
+          "Moonblast",
+          "Psychic",
+          "Ice Beam",
+          "Scald"
+        ]
+      }
+    ],
+    "ace_level": 84
+  },
+  {
+    "name": "Hop - If you choose Sobble",
+    "sheet": "Champions Cup",
+    "pokemon": [
+      {
+        "name": "Skarmory",
+        "level": 81,
+        "item": "Rocky Helmet",
+        "ability": "Sturdy",
+        "nature": "Jolly",
+        "evs": "252 HP/252 Def/4 Spe",
+        "moves": [
+          "Stealth Rock",
+          "Roost",
+          "Iron Head",
+          "Brave Bird"
+        ]
+      },
+      {
+        "name": "Dubwool",
+        "level": 81,
+        "item": "Leftovers",
+        "ability": "Fluffy",
+        "nature": "Impish",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "Double-Edge",
+          "Flame Charge",
+          "Cotton Guard",
+          "Body Press"
+        ]
+      },
+      {
+        "name": "Cinderace-Gmax",
+        "level": 84,
+        "item": "Heavy-Duty Boots",
+        "ability": "Libero",
+        "nature": "Jolly",
+        "evs": "252 Atk/4 SpD/252 Spe",
+        "moves": [
+          "Pyro Ball",
+          "U-turn",
+          "Sucker Punch",
+          "High Jump Kick"
+        ]
+      },
+      {
+        "name": "Cramorant",
+        "level": 82,
+        "item": "Power Herb",
+        "ability": "Gulp Missile",
+        "nature": "Adamant",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Dive",
+          "Reversal",
+          "Flip Turn",
+          "Pluck"
+        ]
+      },
+      {
+        "name": "Flygon",
+        "level": 82,
+        "item": "Yache Berry",
+        "ability": "Compound Eyes",
+        "nature": "Modest",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "U-turn",
+          "Scorching Sands",
+          "Heat Wave",
+          "Dragon Pulse"
+        ]
+      },
+      {
+        "name": "Decidueye",
+        "level": 83,
+        "item": "Life Orb",
+        "ability": "Long Reach",
+        "nature": "Adamant",
+        "evs": "252 HP/252 Atk",
+        "moves": [
+          "Poltergeist",
+          "Brave Bird",
+          "Leaf Blad",
+          "U-turn"
+        ]
+      }
+    ],
+    "ace_level": 84
+  },
+  {
+    "name": "Oleana",
+    "sheet": "Other Boss Fights",
+    "pokemon": [
+      {
+        "name": "Froslass",
+        "level": 82,
+        "item": "Focus Sash",
+        "ability": "Cursed Body",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Shadow Ball",
+          "Spikes",
+          "Taunt",
+          "Ice Beam"
+        ]
+      },
+      {
+        "name": "Tsareena",
+        "level": 82,
+        "item": "Assault Vest",
+        "ability": "Queenly Majesty",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Power Whip",
+          "U-turn",
+          "Triple Axel",
+          "Rapid Spin"
+        ]
+      },
+      {
+        "name": "Garbador-Gmax",
+        "level": 85,
+        "item": "Rocky Helmet",
+        "ability": "Weak Armor",
+        "nature": "Impish",
+        "evs": "252 HP/200 Def/56 Spe",
+        "moves": [
+          "Stomping Tantrum",
+          "Gunk Shot",
+          "Body Press",
+          "Toxic Spikes"
+        ]
+      },
+      {
+        "name": "Milotic",
+        "level": 83,
+        "item": "Leftovers",
+        "ability": "Marvel Scale",
+        "nature": "Impish",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "Recover",
+          "Scald",
+          "Flip Turn",
+          "Toxic"
+        ]
+      },
+      {
+        "name": "Lopunny",
+        "level": 83,
+        "item": "Life Orb",
+        "ability": "Scrappy",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Fake Out",
+          "High Jump Kick",
+          "Play Rough",
+          "Ice Punch"
+        ]
+      },
+      {
+        "name": "Salazzle",
+        "level": 84,
+        "item": "Black Sludge",
+        "ability": "Corrosion",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Nasty Plot",
+          "Flamethrower",
+          "Dragon Pulse",
+          "Sludge Wave"
+        ]
+      }
+    ],
+    "ace_level": 85
+  },
+  {
+    "name": "Bede",
+    "sheet": "Champions Cup",
+    "pokemon": [
+      {
+        "name": "Wigglytuff",
+        "level": 83,
+        "item": "Misty Seed",
+        "ability": "Misty Surge",
+        "nature": "Bold",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "Wish",
+          "Protect",
+          "Hyper Voice",
+          "Moonblast"
+        ]
+      },
+      {
+        "name": "Gardevoir",
+        "level": 83,
+        "item": "Choice Scarf",
+        "ability": "Trace",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Trick",
+          "Psychic",
+          "Mystical Fire",
+          "Moonblast"
+        ]
+      },
+      {
+        "name": "Hatterene-Gmax",
+        "level": 86,
+        "item": "Leftovers",
+        "ability": "Magic Bounce",
+        "nature": "Quiet",
+        "evs": "252 HP/252 SpA",
+        "moves": [
+          "Mystical Fire",
+          "Draining Kiss",
+          "Nuzzle",
+          "Psyshock"
+        ]
+      },
+      {
+        "name": "Mr. Mime",
+        "level": 84,
+        "item": "Light Clay",
+        "ability": "Filter",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Light Screen",
+          "Reflect",
+          "Psychic",
+          "Dazzling Gleam"
+        ]
+      },
+      {
+        "name": "G-Rapidash",
+        "level": 84,
+        "item": "Life Orb",
+        "ability": "Pixilate",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Psycho Cut",
+          "Megahorn",
+          "Low Kick",
+          "Double-Edge"
+        ]
+      },
+      {
+        "name": "Diancie",
+        "level": 85,
+        "item": "Power Herb",
+        "ability": "Clear Body",
+        "nature": "Careful",
+        "evs": "252 HP/252 Spe",
+        "moves": [
+          "Moonblast",
+          "Meteor Beam",
+          "Mystical Fire",
+          "Stealth Rock"
+        ]
+      }
+    ],
+    "ace_level": 86
+  },
+  {
+    "name": "Nessa",
+    "sheet": "Champions Cup",
+    "pokemon": [
+      {
+        "name": "Pelipper",
+        "level": 85,
+        "item": "Damp Rock",
+        "ability": "Drizzle",
+        "nature": "Bold",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "U-turn",
+          "Roost",
+          "Hurricane",
+          "Weather Ball"
+        ]
+      },
+      {
+        "name": "Barraskewda",
+        "level": 85,
+        "item": "Life Orb",
+        "ability": "Swift Swim",
+        "nature": "Adamant",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Close Combat",
+          "Liquidation",
+          "Psychic Fangs",
+          "Flip Turn"
+        ]
+      },
+      {
+        "name": "Drednaw-Gmax",
+        "level": 88,
+        "item": "Rindo Berry",
+        "ability": "Swift Swim",
+        "nature": "Adamant",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Liquidation",
+          "Earthquake",
+          "Ice Fang",
+          "Stone Edge"
+        ]
+      },
+      {
+        "name": "Seaking",
+        "level": 86,
+        "item": "Focus Sash",
+        "ability": "Swift Swim",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Megahorn",
+          "Fishious Rend",
+          "Scale Shot",
+          "Drill Run"
+        ]
+      },
+      {
+        "name": "Jellicent",
+        "level": 86,
+        "item": "Leftovers",
+        "ability": "Cursed Body",
+        "nature": "Bold",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "Hex",
+          "Water Spout",
+          "Strength Sap",
+          "Will-O-Wisp"
+        ]
+      },
+      {
+        "name": "Quagsire",
+        "level": 87,
+        "item": "Rocky Helmet",
+        "ability": "Unaware",
+        "nature": "Impish",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "Recover",
+          "Scald",
+          "Toxic",
+          "Earthquake"
+        ]
+      }
+    ],
+    "ace_level": 88
+  },
+  {
+    "name": "Bea",
+    "sheet": "Champions Cup",
+    "pokemon": [
+      {
+        "name": "Kommo-o",
+        "level": 85,
+        "item": "Leftovers",
+        "ability": "Bulletproof",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Stealth Rock",
+          "Clangorous Soul",
+          "Body Press",
+          "Clanging Scales"
+        ]
+      },
+      {
+        "name": "Grapploct",
+        "level": 85,
+        "item": "Assault Vest",
+        "ability": "Technician",
+        "nature": "Adamat",
+        "evs": "252 Atk/252 Def",
+        "moves": [
+          "Brutal Swing",
+          "Power-Up Punch",
+          "Ice Punch",
+          "Revenge"
+        ]
+      },
+      {
+        "name": "Machamp-Gmax",
+        "level": 88,
+        "item": "Flame Orb",
+        "ability": "Guts",
+        "nature": "Adamant",
+        "evs": "252 HP/252 Atk",
+        "moves": [
+          "Knock Off",
+          "Bullet Punch",
+          "Facade",
+          "Close Combat"
+        ]
+      },
+      {
+        "name": "Lucario",
+        "level": 86,
+        "item": "Focus Sash",
+        "ability": "Justified",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Vacuum Wave",
+          "Steel Beam",
+          "Dark Pulse",
+          "Aura Sphere"
+        ]
+      },
+      {
+        "name": "Mienshao",
+        "level": 86,
+        "item": "Life Orb",
+        "ability": "Regenerator",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Knock Off",
+          "Close Combat",
+          "Fake Out",
+          "U-turn"
+        ]
+      },
+      {
+        "name": "Sirfetch'd",
+        "level": 87,
+        "item": "Leek",
+        "ability": "Scrappy",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Sacred Sword",
+          "King's Shield",
+          "Poison Jab",
+          "Knock Off"
+        ]
+      }
+    ],
+    "ace_level": 88
+  },
+  {
+    "name": "Allister",
+    "sheet": "Champions Cup",
+    "pokemon": [
+      {
+        "name": "Dusclops",
+        "level": 85,
+        "item": "Eviolite",
+        "ability": "Cursed Body",
+        "nature": "Bold",
+        "evs": "252 HP/132 Def/124 SpD",
+        "moves": [
+          "Will-O-Wisp",
+          "Night Shade",
+          "Brick Break",
+          "Trick Room"
+        ]
+      },
+      {
+        "name": "Gourgeist",
+        "level": 85,
+        "item": "Flame Orb",
+        "ability": "Flare Boost",
+        "nature": "Modest",
+        "evs": "252 HP/252 SpA",
+        "moves": [
+          "Shadow Ball",
+          "Flamethrower",
+          "Will-O-Wisp",
+          "Energy Ball"
+        ]
+      },
+      {
+        "name": "Gengar-Gmax",
+        "level": 88,
+        "item": "Focus Sash",
+        "ability": "Cursed Body",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Thunderbolt",
+          "Sludge Wave",
+          "Shadow Ball",
+          "Taunt"
+        ]
+      },
+      {
+        "name": "Golurk",
+        "level": 86,
+        "item": "Assault Vest",
+        "ability": "No Guard",
+        "nature": "Adamant",
+        "evs": "252 HP/252 Atk",
+        "moves": [
+          "Earthquake",
+          "Poltergeist",
+          "Dynamic Punch",
+          "Stealth Rock"
+        ]
+      },
+      {
+        "name": "Chandelure",
+        "level": 86,
+        "item": "Choice Specs",
+        "ability": "Infiltrator",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Shadow Ball",
+          "Flamethrower",
+          "Trick",
+          "Energy Ball"
+        ]
+      },
+      {
+        "name": "Cursola",
+        "level": 87,
+        "item": "Power Herb",
+        "ability": "Perish Body",
+        "nature": "Bold",
+        "evs": "252 HP/252 SpA",
+        "moves": [
+          "Shadow Ball",
+          "Earth Power",
+          "Meteor Beam",
+          "Strength Sap"
+        ]
+      }
+    ],
+    "ace_level": 88
+  },
+  {
+    "name": "Raihan",
+    "sheet": "Champions Cup",
+    "pokemon": [
+      {
+        "name": "Hippowdown",
+        "level": 85,
+        "item": "Smooth Rock",
+        "ability": "Sand Stream",
+        "nature": "Impish",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Yawn",
+          "High Horsepower",
+          "Slack Off",
+          "Heavy Slam"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "level": 85,
+        "item": "Life Orb",
+        "ability": "Sand Force",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Rock Slide",
+          "Stomping Tantrum",
+          "Iron Head",
+          "Breaking Swipe"
+        ]
+      },
+      {
+        "name": "Zygarde 10%",
+        "level": 86,
+        "item": "Focus Sash",
+        "ability": "Aura Break",
+        "nature": "Adamant",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Scale Shot",
+          "Thousand Arrows",
+          "Thousand Waves",
+          "Reversal"
+        ]
+      },
+      {
+        "name": "Duraladon-Gmx",
+        "level": 88,
+        "item": "Assault Vest",
+        "ability": "Power of Alchemy",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Steel Beam",
+          "Draco Meteor",
+          "Protect",
+          "Thunderbolt"
+        ]
+      },
+      {
+        "name": "Onix",
+        "level": 86,
+        "item": "Eviolite",
+        "ability": "Rock Head",
+        "nature": "Jolly",
+        "evs": "124 HP/252 Atk/126 Spe",
+        "moves": [
+          "Dragon Hammer",
+          "Head Smash",
+          "Dragon Dance",
+          "High Horsepower"
+        ]
+      },
+      {
+        "name": "Dragonite",
+        "level": 87,
+        "item": "Safety Goggles",
+        "ability": "Multiscale",
+        "nature": "Adamant",
+        "evs": "140 HP/252 Atk/108 Spe",
+        "moves": [
+          "Sandstorm",
+          "Fire Punch",
+          "Extreme Speed",
+          "Dragon Claw"
+        ]
+      }
+    ],
+    "ace_level": 88
+  },
+  {
+    "name": "Rose",
+    "sheet": "Other Boss Fights",
+    "pokemon": [
+      {
+        "name": "Copperajah-Gmax",
+        "level": 89,
+        "item": "Leftovers",
+        "ability": "Heavy Metal",
+        "nature": "Adamant",
+        "evs": "156 HP/252 SpD/84 Spe",
+        "moves": [
+          "Heavy Slam",
+          "Power Whip",
+          "Stone Edge",
+          "Heat Crash"
+        ]
+      },
+      {
+        "name": "Ferrothorn",
+        "level": 86,
+        "item": "Rocky Helmet",
+        "ability": "Iron Barbs",
+        "nature": "Impish",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "Leech Seed",
+          "Spikes",
+          "Stealth Rock",
+          "Body Press"
+        ]
+      },
+      {
+        "name": "Excadrill",
+        "level": 86,
+        "item": "Focus Sash",
+        "ability": "Sand Force",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Earthquake",
+          "Iron Head",
+          "X-Scissor",
+          "Rapid Spin"
+        ]
+      },
+      {
+        "name": "Silvally-Steel",
+        "level": 87,
+        "item": "Steel Memory",
+        "ability": "RKS System",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Multi-Attack",
+          "Flame Charge",
+          "U-turn",
+          "Rock Slide"
+        ]
+      },
+      {
+        "name": "Metagross",
+        "level": 87,
+        "item": "Choice Band",
+        "ability": "Tough Claws",
+        "nature": "Adamant",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Meteor Mash",
+          "Earthquake",
+          "Zen Headbutt",
+          "Bullet Punch"
+        ]
+      },
+      {
+        "name": "Melmetal",
+        "level": 88,
+        "item": "Assault Vest",
+        "ability": "Iron Fist",
+        "nature": "Adamant",
+        "evs": "216 HP/252 Atk/40 Spe",
+        "moves": [
+          "Double Iron Bash",
+          "Thunder Punch",
+          "Superpower",
+          "Earthquake"
+        ]
+      }
+    ],
+    "ace_level": 89
+  },
+  {
+    "name": "Champion Leon - If you choose Grookey",
+    "sheet": "Champions Cup",
+    "pokemon": [
+      {
+        "name": "Aegislash",
+        "level": 89,
+        "item": "Leftovers",
+        "ability": "Stance Change",
+        "nature": "Modest",
+        "evs": "140 HP/252 Atk/108 Spe",
+        "moves": [
+          "King's Shield",
+          "Shadow Ball",
+          "Substitute",
+          "Flash Cannon"
+        ]
+      },
+      {
+        "name": "Dragapult",
+        "level": 89,
+        "item": "Focus Sash",
+        "ability": "Infiltrator",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "U-turn",
+          "Draco Meteor",
+          "Flamethrower",
+          "Shadow Ball"
+        ]
+      },
+      {
+        "name": "Haxorous",
+        "level": 90,
+        "item": "Life Orb",
+        "ability": "Mold Breaker",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Poison Jab",
+          "Close Combat",
+          "Outrage",
+          "Earthquake"
+        ]
+      },
+      {
+        "name": "Seismitoad",
+        "level": 90,
+        "item": "Assault Vest",
+        "ability": "Water Absorb",
+        "nature": "Impish",
+        "evs": "252 HP/252 Def",
+        "moves": [
+          "Stealth Rock",
+          "Liquidation",
+          "Earthquake",
+          "Knock Off"
+        ]
+      },
+      {
+        "name": "Cinderace",
+        "level": 91,
+        "item": "Expert Belt",
+        "ability": "Libero",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Pyro Ball",
+          "U-turn",
+          "Court Change",
+          "Sucker Punch"
+        ]
+      },
+      {
+        "name": "Charizard-Gmax",
+        "level": 92,
+        "item": "Heavy-Duty Boots",
+        "ability": "Tough Claws",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Dual Wingbeat",
+          "Dragon Claw",
+          "Earthquake",
+          "Flare Bltiz"
+        ]
+      }
+    ],
+    "ace_level": 92
+  },
+  {
+    "name": "Champion Leon - If you choose Scorbunny",
+    "sheet": "Champions Cup",
+    "pokemon": [
+      {
+        "name": "Aegislash",
+        "level": 89,
+        "item": "Leftovers",
+        "ability": "Stance Change",
+        "nature": "Modest",
+        "evs": "140 HP/252 Atk/108 Spe",
+        "moves": [
+          "King's Shield",
+          "Shadow Ball",
+          "Substitute",
+          "Flash Cannon"
+        ]
+      },
+      {
+        "name": "Dragapult",
+        "level": 89,
+        "item": "Focus Sash",
+        "ability": "Infiltrator",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "U-turn",
+          "Draco Meteor",
+          "Flamethrower",
+          "Shadow Ball"
+        ]
+      },
+      {
+        "name": "Haxorous",
+        "level": 90,
+        "item": "Life Orb",
+        "ability": "Mold Breaker",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Poison Jab",
+          "Close Combat",
+          "Outrage",
+          "Earthquake"
+        ]
+      },
+      {
+        "name": "Mr. Rime",
+        "level": 90,
+        "item": "Lum Berry",
+        "ability": "Screen Cleaner",
+        "nature": "Modest",
+        "evs": "252 HP/252 SpA",
+        "moves": [
+          "Psychic",
+          "Slack Off",
+          "Dazzling Gleam",
+          "Freeze-Dry"
+        ]
+      },
+      {
+        "name": "Inteleon",
+        "level": 91,
+        "item": "Scope Lens",
+        "ability": "Sniper",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "Ice Beam",
+          "Snipe Shot",
+          "U-turn",
+          "Dark Pulse"
+        ]
+      },
+      {
+        "name": "Charizard-Gmax",
+        "level": 92,
+        "item": "Heavy-Duty Boots",
+        "ability": "Tough Claws",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Dual Wingbeat",
+          "Dragon Claw",
+          "Earthquake",
+          "Flare Bltiz"
+        ]
+      }
+    ],
+    "ace_level": 92
+  },
+  {
+    "name": "Champion Leon - If you choose Sobble",
+    "sheet": "Champions Cup",
+    "pokemon": [
+      {
+        "name": "Aegislash",
+        "level": 89,
+        "item": "Leftovers",
+        "ability": "Stance Change",
+        "nature": "Modest",
+        "evs": "140 HP/252 Atk/108 Spe",
+        "moves": [
+          "King's Shield",
+          "Shadow Ball",
+          "Substitute",
+          "Flash Cannon"
+        ]
+      },
+      {
+        "name": "Dragapult",
+        "level": 89,
+        "item": "Focus Sash",
+        "ability": "Infiltrator",
+        "nature": "Timid",
+        "evs": "252 SpA/252 Spe",
+        "moves": [
+          "U-turn",
+          "Draco Meteor",
+          "Flamethrower",
+          "Shadow Ball"
+        ]
+      },
+      {
+        "name": "Haxorous",
+        "level": 90,
+        "item": "Life Orb",
+        "ability": "Mold Breaker",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Poison Jab",
+          "Close Combat",
+          "Outrage",
+          "Earthquake"
+        ]
+      },
+      {
+        "name": "Rhyperior",
+        "level": 90,
+        "item": "Lum Berry",
+        "ability": "Solid Rock",
+        "nature": "Careful",
+        "evs": "252 HP/252 SpD",
+        "moves": [
+          "Stealth Rock",
+          "Earthquake",
+          "Megahorn",
+          "Stone Edge"
+        ]
+      },
+      {
+        "name": "Rillaboom",
+        "level": 91,
+        "item": "Terrain Extender",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Grassy Glide",
+          "Knock Off",
+          "U-turn",
+          "Superpower"
+        ]
+      },
+      {
+        "name": "Charizard-Gmax",
+        "level": 92,
+        "item": "Heavy-Duty Boots",
+        "ability": "Tough Claws",
+        "nature": "Jolly",
+        "evs": "252 Atk/252 Spe",
+        "moves": [
+          "Dual Wingbeat",
+          "Dragon Claw",
+          "Earthquake",
+          "Flare Bltiz"
+        ]
+      }
+    ],
+    "ace_level": 92
+  }
+]
