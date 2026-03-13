@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import trainersData from "@/data/trainers.json";
 import PokemonSprite from "./PokemonSprite";
 import { typeColors, getStatColor, getBstColor } from "@/lib/utils";
@@ -10,39 +11,70 @@ interface TrainersViewProps {
   onSelectPokemon: (name: string) => void;
 }
 
-// ─── Tooltip component ──────────────────────────────────────────────────────
+// ─── Tooltip component (portal + fixed pos — never clipped) ──────────────────
 function Tooltip({ children, content }: { children: React.ReactNode; content: React.ReactNode }) {
   const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const [coords, setCoords] = useState({ top: 0, left: 0 });
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
+
+  const updateCoords = useCallback(() => {
+    if (!triggerRef.current) return;
+    const rect = triggerRef.current.getBoundingClientRect();
+    setCoords({
+      top: rect.top + window.scrollY - 8,   // 8px gap above element
+      left: rect.left + rect.width / 2,
+    });
+  }, []);
+
+  const show = useCallback(() => { updateCoords(); setVisible(true); }, [updateCoords]);
+  const hide = useCallback(() => setVisible(false), []);
 
   // Close on outside click
   useEffect(() => {
     if (!visible) return;
     const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setVisible(false);
+      if (triggerRef.current && !triggerRef.current.contains(e.target as Node)) hide();
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
-  }, [visible]);
+  }, [visible, hide]);
+
+  const tooltipEl = visible && content && mounted ? createPortal(
+    <div
+      className="pointer-events-none"
+      style={{
+        position: "absolute",
+        top: coords.top,
+        left: coords.left,
+        transform: "translate(-50%, -100%)",
+        zIndex: 9999,
+      }}
+    >
+      <div className="w-60 bg-[#1a1a1e] border border-zinc-700 rounded-lg shadow-2xl p-3 text-xs text-zinc-300">
+        {content}
+        <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-700" />
+      </div>
+    </div>,
+    document.body
+  ) : null;
 
   return (
     <div
-      ref={ref}
-      className="relative inline-flex"
-      onMouseEnter={() => setVisible(true)}
-      onMouseLeave={() => setVisible(false)}
-      onClick={(e) => { e.stopPropagation(); setVisible(v => !v); }}
+      ref={triggerRef}
+      className="inline-flex w-full"
+      onMouseEnter={show}
+      onMouseLeave={hide}
+      onClick={(e) => { e.stopPropagation(); visible ? hide() : show(); }}
     >
       {children}
-      {visible && content && (
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50 w-56 bg-[#1a1a1e] border border-[var(--border-color)] rounded-lg shadow-2xl p-3 text-xs text-zinc-300 pointer-events-none">
-          {content}
-          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#1a1a1e]" />
-        </div>
-      )}
+      {tooltipEl}
     </div>
   );
 }
+
 
 // ─── Stat Bar (identical to PokemonDetail) ───────────────────────────────────
 function StatBar({ label, value }: { label: string; value: number }) {
