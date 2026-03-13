@@ -1,144 +1,391 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState, useRef } from "react";
 import trainersData from "@/data/trainers.json";
 import PokemonSprite from "./PokemonSprite";
-import { typeColors } from "@/lib/utils";
-import { Swords, ShieldAlert } from "lucide-react";
+import { typeColors, getStatColor, getBstColor } from "@/lib/utils";
+import { Swords, ShieldAlert, ChevronDown, ChevronUp } from "lucide-react";
 
 interface TrainersViewProps {
   database: Record<string, any>;
   onSelectPokemon: (name: string) => void;
 }
 
-export default function TrainersView({ database, onSelectPokemon }: TrainersViewProps) {
+// ─── Tooltip component ──────────────────────────────────────────────────────
+function Tooltip({ children, content }: { children: React.ReactNode; content: React.ReactNode }) {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Close on outside click
+  useEffect(() => {
+    if (!visible) return;
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setVisible(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [visible]);
+
   return (
-    <div className="flex flex-col gap-10">
-      {trainersData.map((trainer: any, index: number) => (
-        <div key={`${trainer.name}-${index}`} className="bg-[var(--panel)] border border-[var(--border-color)] rounded-xl overflow-hidden shadow-lg">
-          
-          {/* Header */}
-          <div className="bg-[#1f1f22] p-4 flex flex-col md:flex-row md:items-center justify-between border-b border-[var(--border-color)]">
-            <div className="flex items-center gap-3 mb-2 md:mb-0">
-              <div className="p-2 bg-[var(--gold)]/20 rounded-full border border-[var(--gold)]/30">
-                <Swords className="w-6 h-6 text-[var(--gold)]" />
-              </div>
-              <div>
-                <h2 className="text-xl font-bold text-zinc-100">{trainer.name}</h2>
-                <p className="text-zinc-400 text-sm">Ace Level: {trainer.ace_level}</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-2 bg-red-950/40 border border-red-900/50 px-4 py-2 rounded-lg">
-               <ShieldAlert className="w-5 h-5 text-red-400" />
-               <div>
-                  <p className="text-xs text-red-300/80 font-bold uppercase tracking-wider leading-none mb-1">Level Cap</p>
-                  <p className="text-xl font-black text-red-200 leading-none">{trainer.ace_level}</p>
-               </div>
-            </div>
-          </div>
+    <div
+      ref={ref}
+      className="relative inline-flex"
+      onMouseEnter={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
+      onClick={(e) => { e.stopPropagation(); setVisible(v => !v); }}
+    >
+      {children}
+      {visible && content && (
+        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50 w-56 bg-[#1a1a1e] border border-[var(--border-color)] rounded-lg shadow-2xl p-3 text-xs text-zinc-300 pointer-events-none">
+          {content}
+          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#1a1a1e]" />
+        </div>
+      )}
+    </div>
+  );
+}
 
-          {/* Pokemon Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-            {trainer.pokemon.map((p: any, pIdx: number) => {
-              // Try to find the pokemon in the DB to get its types
-              const dbEntry = Object.values(database).find((entry: any) => entry.name === p.name);
-              const types = dbEntry ? dbEntry.types : [];
+// ─── Stat Bar (identical to PokemonDetail) ───────────────────────────────────
+function StatBar({ label, value }: { label: string; value: number }) {
+  const widthPercentage = Math.min((value / 255) * 100, 100);
+  return (
+    <div className="flex items-center gap-2 my-0.5">
+      <span className="w-7 text-[10px] font-bold text-zinc-500 uppercase">{label}</span>
+      <span className="w-7 text-xs font-mono text-zinc-200 text-right">{value}</span>
+      <div className="flex-1 h-2.5 bg-zinc-800 rounded-full overflow-hidden border border-zinc-700/50">
+        <div
+          className="h-full rounded-full transition-all duration-500 ease-out"
+          style={{ width: `${widthPercentage}%`, backgroundColor: getStatColor(value) }}
+        />
+      </div>
+    </div>
+  );
+}
 
-              return (
-                <div 
-                  key={pIdx} 
-                  className="bg-[#121214] border border-[var(--border-color)] rounded-lg p-3 hover:border-[var(--gold)]/50 transition-colors cursor-pointer flex flex-col h-full relative overflow-hidden group"
-                  onClick={() => onSelectPokemon(p.name)}
-                >
-                  {/* Top: Types + Level */}
-                  <div className="flex justify-between items-start mb-2 relative z-10">
-                    <div className="flex gap-1 flex-wrap max-w-[60%]">
-                      {types.length > 0 ? types.map((t: string) => (
-                        <span 
-                          key={t}
-                          className="px-1.5 py-0.5 rounded text-[10px] font-bold text-white uppercase tracking-wider"
-                          style={{ backgroundColor: typeColors[t] || '#777' }}
-                        >
-                          {t}
-                        </span>
-                      )) : (
-                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-white uppercase tracking-wider bg-zinc-600">
-                          Unknown
-                        </span>
-                      )}
-                    </div>
-                    <div className="text-right">
-                       <span className="text-xs text-zinc-500 font-bold uppercase tracking-wider block">Level</span>
-                       <span className="text-lg font-black text-white leading-none block">{p.level}</span>
-                    </div>
-                  </div>
+// ─── Move pill with tooltip ──────────────────────────────────────────────────
+function MovePill({ moveName, movesData }: { moveName: string; movesData: Record<string, any> }) {
+  const moveKey = moveName.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const info = movesData[moveKey] || {};
+  const type: string = info.type || "Normal";
+  const power = info.basePower || null;
+  const acc = info.accuracy === true ? "—" : info.accuracy || "—";
+  const desc: string = info.shortDesc || info.desc || "";
+  const secondary: string | null = info.secondary?.desc || info.secondary?.self?.desc || null;
 
-                  {/* Center: Sprite and Info */}
-                  <div className="flex items-center gap-3 mb-4 mt-2 relative z-10">
-                    <div className="relative w-16 h-16 bg-zinc-800/50 rounded-lg p-1 border border-zinc-700/50 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                       <PokemonSprite pokemonName={p.name} className="w-14 h-14 object-contain pixelated" />
-                    </div>
-                    <div>
-                       <h3 className="text-lg font-bold text-zinc-100">{p.name}</h3>
-                       <div className="text-xs text-zinc-400 mt-1 line-clamp-1">
-                          <span className="text-blue-300 font-medium">{p.ability || "Unknown Ability"}</span>
-                          {p.item && (
-                            <>
-                              <span className="mx-1.5 opactiy-50">•</span>
-                              <span className="text-emerald-300 flex items-center inline-flex gap-1">
-                                {p.item}
-                              </span>
-                            </>
-                          )}
-                       </div>
-                    </div>
-                  </div>
+  const tooltipContent = (
+    <div className="space-y-1">
+      <p className="font-bold text-zinc-100">{moveName}</p>
+      {desc && <p className="text-zinc-400 leading-snug">{desc}</p>}
+      {secondary && (
+        <p className="text-amber-300 leading-snug border-t border-zinc-700 pt-1 mt-1">
+          ⚡ {secondary}
+        </p>
+      )}
+    </div>
+  );
 
-                  {/* Decorative background number */}
-                  <div className="absolute -bottom-4 right-2 text-8xl font-black text-zinc-800/20 z-0 select-none pointer-events-none">
-                     {pIdx + 1}
-                  </div>
-
-                  <div className="mt-auto space-y-3 relative z-10">
-                    {/* EVs and Nature */}
-                    {(p.evs || p.nature) && (
-                       <div className="grid grid-cols-2 gap-2 text-xs bg-zinc-900/80 p-2 rounded-md border border-zinc-800">
-                          {p.evs && (
-                            <div>
-                               <span className="text-zinc-500 font-medium block">EVs/IVs</span>
-                               <span className="text-zinc-300 font-bold">{p.evs}</span>
-                            </div>
-                          )}
-                          {p.nature && (
-                            <div>
-                               <span className="text-zinc-500 font-medium block">Nature</span>
-                               <span className="text-purple-300 font-bold">{p.nature}</span>
-                            </div>
-                          )}
-                       </div>
-                    )}
-                    
-                    {/* Moves */}
-                    <div className="grid grid-cols-2 gap-1.5">
-                      {p.moves.map((m: string, mIdx: number) => (
-                         <div key={mIdx} className="bg-zinc-800 p-1.5 rounded text-xs font-semibold text-zinc-200 border border-zinc-700 truncate text-center hover:bg-zinc-700 transition-colors">
-                            {m}
-                         </div>
-                      ))}
-                      {/* Fill empty move slots */}
-                      {Array.from({ length: Math.max(0, 4 - p.moves.length) }).map((_, emptyIdx) => (
-                         <div key={`empty-${emptyIdx}`} className="bg-zinc-800/30 p-1.5 rounded text-xs font-semibold text-zinc-600 border border-zinc-800 border-dashed text-center">
-                            -
-                         </div>
-                      ))}
-                    </div>
-                  </div>
-
-                </div>
-              );
-            })}
+  return (
+    <Tooltip content={tooltipContent}>
+      <div className="bg-zinc-800 border border-zinc-700 rounded-lg overflow-hidden cursor-help hover:border-zinc-500 transition-colors w-full">
+        {/* Type accent bar */}
+        <div className="h-1 w-full" style={{ backgroundColor: typeColors[type] || "#777" }} />
+        <div className="px-2 py-1.5 flex flex-col gap-0.5">
+          <span className="text-xs font-semibold text-zinc-100 leading-none truncate">{moveName}</span>
+          <div className="flex items-center gap-1 mt-0.5">
+            <span
+              className="px-1.5 py-0.5 rounded text-[9px] font-bold text-white uppercase tracking-wide leading-none"
+              style={{ backgroundColor: typeColors[type] || "#777" }}
+            >
+              {type}
+            </span>
+            <span className="text-[9px] text-zinc-500 font-mono">
+              {power ? `⚔ ${power}` : "—"}
+            </span>
+            <span className="text-[9px] text-zinc-500 font-mono">
+              {acc !== "—" ? `✓ ${acc}%` : "✓ —"}
+            </span>
           </div>
         </div>
-      ))}
+      </div>
+    </Tooltip>
+  );
+}
+
+// ─── Ability pill with tooltip ───────────────────────────────────────────────
+function AbilityPill({ abilityName, abilitiesData }: { abilityName: string; abilitiesData: Record<string, any> }) {
+  const abKey = abilityName.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const info = abilitiesData[abKey] || {};
+  const desc: string = info.shortDesc || info.desc || "No description available.";
+
+  const tooltipContent = (
+    <div className="space-y-1">
+      <p className="font-bold text-zinc-100">{abilityName}</p>
+      <p className="text-zinc-400 leading-snug">{desc}</p>
+    </div>
+  );
+
+  return (
+    <Tooltip content={tooltipContent}>
+      <span className="cursor-help px-2.5 py-1 text-xs rounded border border-zinc-700 text-zinc-300 bg-zinc-800 hover:border-zinc-500 transition-colors">
+        {abilityName}
+      </span>
+    </Tooltip>
+  );
+}
+
+// ─── Single Pokémon card ─────────────────────────────────────────────────────
+function PokemonCard({
+  p,
+  pIdx,
+  dbEntry,
+  movesData,
+  abilitiesData,
+  onSelectPokemon,
+}: {
+  p: any;
+  pIdx: number;
+  dbEntry: any;
+  movesData: Record<string, any>;
+  abilitiesData: Record<string, any>;
+  onSelectPokemon: (name: string) => void;
+}) {
+  const types: string[] = dbEntry ? dbEntry.types : [];
+  const stats = dbEntry?.vanilla?.stats || dbEntry?.stats || null;
+  const bst = stats ? stats.hp + stats.atk + stats.def + stats.spa + stats.spd + stats.spe : null;
+
+  return (
+    <div className="bg-[#121214] border border-[var(--border-color)] rounded-xl overflow-hidden flex flex-col">
+      {/* Pokémon header — clickable to open detail */}
+      <div
+        className="flex items-center gap-3 p-3 bg-zinc-900/60 cursor-pointer hover:bg-zinc-800/60 transition-colors border-b border-[var(--border-color)]"
+        onClick={() => onSelectPokemon(p.name)}
+      >
+        <div className="w-14 h-14 bg-zinc-800/60 rounded-lg flex items-center justify-center flex-shrink-0 border border-zinc-700/50">
+          <PokemonSprite pokemonName={p.name} className="w-12 h-12 object-contain pixelated" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <h3 className="text-sm font-bold text-zinc-100 leading-none mb-1 truncate">{p.name}</h3>
+          <div className="flex gap-1 flex-wrap mb-1">
+            {types.length > 0
+              ? types.map((t: string) => (
+                  <span
+                    key={t}
+                    className="px-1.5 py-0.5 rounded text-[9px] font-bold text-white uppercase tracking-wider"
+                    style={{ backgroundColor: typeColors[t] || "#777" }}
+                  >
+                    {t}
+                  </span>
+                ))
+              : <span className="px-1.5 py-0.5 rounded text-[9px] font-bold text-white uppercase tracking-wider bg-zinc-600">?</span>}
+          </div>
+          <div className="flex items-center gap-2 text-[10px] text-zinc-500">
+            <span>Lv. <span className="font-black text-zinc-200">{p.level}</span></span>
+            {p.nature && <span>• <span className="text-purple-300">{p.nature}</span></span>}
+            {p.item && <span>• <span className="text-emerald-300">{p.item}</span></span>}
+          </div>
+        </div>
+      </div>
+
+      <div className="p-3 space-y-3 flex-1">
+        {/* Ability */}
+        {p.ability && (
+          <div>
+            <p className="text-[9px] uppercase font-bold text-zinc-600 tracking-widest mb-1">Ability</p>
+            <AbilityPill abilityName={p.ability} abilitiesData={abilitiesData} />
+          </div>
+        )}
+
+        {/* EVs */}
+        {p.evs && (
+          <div>
+            <p className="text-[9px] uppercase font-bold text-zinc-600 tracking-widest mb-0.5">EVs/IVs</p>
+            <p className="text-xs text-zinc-400 font-mono">{p.evs}</p>
+          </div>
+        )}
+
+        {/* Stats */}
+        {stats ? (
+          <div>
+            <p className="text-[9px] uppercase font-bold text-zinc-600 tracking-widest mb-1">Base Stats</p>
+            <div className="space-y-0">
+              <StatBar label="HP" value={stats.hp} />
+              <StatBar label="Atk" value={stats.atk} />
+              <StatBar label="Def" value={stats.def} />
+              <StatBar label="SpA" value={stats.spa} />
+              <StatBar label="SpD" value={stats.spd} />
+              <StatBar label="Spe" value={stats.spe} />
+            </div>
+            {bst !== null && (
+              <div className="flex justify-between items-center mt-1.5 pt-1.5 border-t border-zinc-800 text-xs font-bold">
+                <span className="text-zinc-500">BST</span>
+                <span style={{ color: getBstColor(bst) }}>{bst}</span>
+              </div>
+            )}
+          </div>
+        ) : null}
+
+        {/* Moves */}
+        {p.moves && p.moves.length > 0 && (
+          <div>
+            <p className="text-[9px] uppercase font-bold text-zinc-600 tracking-widest mb-1.5">Moves</p>
+            <div className="grid grid-cols-2 gap-1.5">
+              {p.moves.map((m: string, mIdx: number) => (
+                <MovePill key={mIdx} moveName={m} movesData={movesData} />
+              ))}
+              {Array.from({ length: Math.max(0, 4 - p.moves.length) }).map((_, i) => (
+                <div
+                  key={`empty-${i}`}
+                  className="bg-zinc-800/30 border border-zinc-800 border-dashed rounded-lg px-2 py-3 text-center text-zinc-700 text-xs"
+                >
+                  —
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ─── Main component ──────────────────────────────────────────────────────────
+export default function TrainersView({ database, onSelectPokemon }: TrainersViewProps) {
+  const [movesData, setMovesData] = useState<Record<string, any>>({});
+  const [abilitiesData, setAbilitiesData] = useState<Record<string, any>>({});
+  const [openTrainers, setOpenTrainers] = useState<Record<number, boolean>>({});
+
+  useEffect(() => {
+    fetch("https://play.pokemonshowdown.com/data/moves.json")
+      .then((r) => r.json())
+      .then((data) => setMovesData(data))
+      .catch((e) => console.error("Failed to load moves", e));
+
+    fetch("https://play.pokemonshowdown.com/data/abilities.js")
+      .then((r) => r.text())
+      .then((text) => {
+        try {
+          const clean = text.replace("exports.BattleAbilities = ", "return ");
+          const parseFunc = new Function(clean);
+          setAbilitiesData(parseFunc());
+        } catch (err) {
+          console.error("Parse error on abilities.js", err);
+        }
+      })
+      .catch((e) => console.error("Failed to load abilities", e));
+  }, []);
+
+  const toggleTrainer = (index: number) => {
+    setOpenTrainers((prev) => ({ ...prev, [index]: !prev[index] }));
+  };
+
+  // Group trainers by sheet (battle category)
+  const sheetOrder: string[] = [];
+  (trainersData as any[]).forEach((t: any) => {
+    if (!sheetOrder.includes(t.sheet)) sheetOrder.push(t.sheet);
+  });
+
+  const sheetColors: Record<string, string> = {
+    "Gym Leaders": "#b45309",        // amber
+    "Rival Battles": "#1d4ed8",      // blue
+    "Elite Four": "#7c3aed",         // purple
+    "Champion": "#047857",           // green
+    "Post Game": "#be185d",          // pink
+  };
+
+  return (
+    <div className="flex flex-col gap-10">
+      {sheetOrder.map((sheet) => {
+        const trainers = (trainersData as any[]).filter((t) => t.sheet === sheet);
+        const accentColor = sheetColors[sheet] || "#555";
+
+        return (
+          <section key={sheet}>
+            {/* Sheet header */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-px flex-1 bg-[var(--border-color)]" />
+              <span
+                className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-white"
+                style={{ backgroundColor: accentColor }}
+              >
+                {sheet}
+              </span>
+              <div className="h-px flex-1 bg-[var(--border-color)]" />
+            </div>
+
+            <div className="flex flex-col gap-3">
+              {trainers.map((trainer: any, rawIdx: number) => {
+                // Use global index for collapse state key
+                const globalIdx = (trainersData as any[]).indexOf(trainer);
+                const isOpen = openTrainers[globalIdx] ?? false;
+
+                return (
+                  <div
+                    key={`${trainer.name}-${globalIdx}`}
+                    className="bg-[var(--panel)] border border-[var(--border-color)] rounded-xl overflow-hidden shadow-md"
+                  >
+                    {/* Trainer Header — collapse toggle */}
+                    <button
+                      className="w-full flex items-center justify-between p-4 bg-[#1f1f22] hover:bg-zinc-800/70 transition-colors text-left"
+                      onClick={() => toggleTrainer(globalIdx)}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="p-2 rounded-full border"
+                          style={{ backgroundColor: `${accentColor}30`, borderColor: `${accentColor}60` }}
+                        >
+                          <Swords className="w-5 h-5" style={{ color: accentColor }} />
+                        </div>
+                        <div>
+                          <h2 className="text-base font-bold text-zinc-100">{trainer.name}</h2>
+                          <p className="text-xs text-zinc-500">
+                            {trainer.pokemon.length} Pokémon &nbsp;•&nbsp; Ace Lv. {trainer.ace_level}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-1.5 bg-red-950/40 border border-red-900/50 px-3 py-1.5 rounded-lg">
+                          <ShieldAlert className="w-4 h-4 text-red-400" />
+                          <div className="text-right">
+                            <p className="text-[9px] text-red-300/70 font-bold uppercase tracking-wider leading-none">Level Cap</p>
+                            <p className="text-base font-black text-red-200 leading-none">{trainer.ace_level}</p>
+                          </div>
+                        </div>
+                        <div className="text-zinc-500">
+                          {isOpen
+                            ? <ChevronUp className="w-5 h-5" />
+                            : <ChevronDown className="w-5 h-5" />}
+                        </div>
+                      </div>
+                    </button>
+
+                    {/* Pokémon Grid — shown only when expanded */}
+                    {isOpen && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+                        {trainer.pokemon.map((p: any, pIdx: number) => {
+                          const dbEntry = Object.values(database).find(
+                            (entry: any) => entry.name === p.name
+                          );
+                          return (
+                            <PokemonCard
+                              key={pIdx}
+                              p={p}
+                              pIdx={pIdx}
+                              dbEntry={dbEntry}
+                              movesData={movesData}
+                              abilitiesData={abilitiesData}
+                              onSelectPokemon={onSelectPokemon}
+                            />
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }
