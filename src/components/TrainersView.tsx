@@ -268,7 +268,7 @@ function PokemonCard({
 }) {
   const [copied, setCopied] = useState(false);
   const types: string[] = dbEntry ? dbEntry.types : [];
-  const stats = dbEntry?.vanilla?.stats || dbEntry?.stats || null;
+  const stats = dbEntry?.augmented?.stats || dbEntry?.vanilla?.stats || dbEntry?.stats || null;
   const bst = stats ? stats.hp + stats.atk + stats.def + stats.spa + stats.spd + stats.spe : null;
 
   const handleExportToSmogon = (e: React.MouseEvent) => {
