@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 import trainersData from "@/data/trainers.json";
 import PokemonSprite from "./PokemonSprite";
 import { typeColors, getStatColor, getBstColor } from "@/lib/utils";
-import { Swords, ShieldAlert, ChevronDown, ChevronUp } from "lucide-react";
+import { Swords, ShieldAlert, ChevronDown, ChevronUp, ClipboardCopy, Check } from "lucide-react";
 
 interface TrainersViewProps {
   database: Record<string, any>;
@@ -180,12 +180,61 @@ function PokemonCard({
   abilitiesData: Record<string, any>;
   onSelectPokemon: (name: string) => void;
 }) {
+  const [copied, setCopied] = useState(false);
   const types: string[] = dbEntry ? dbEntry.types : [];
   const stats = dbEntry?.vanilla?.stats || dbEntry?.stats || null;
   const bst = stats ? stats.hp + stats.atk + stats.def + stats.spa + stats.spd + stats.spe : null;
 
+  const handleExportToSmogon = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    
+    let exportText = `${p.name}`;
+    if (p.item) exportText += ` @ ${p.item}`;
+    
+    if (p.ability) exportText += `\nAbility: ${p.ability}`;
+    
+    exportText += `\nLevel: ${p.level}`;
+    
+    if (p.evs) {
+      const parts = p.evs.split("/").map((part: string) => part.trim());
+      const normalizedParts = parts.map((part: string) => {
+        const match = part.match(/^([A-Za-z]+)\s*(\d+)$/) || part.match(/^(\d+)\s*([A-Za-z]+)$/);
+        if (match) {
+          const isFirstNum = !isNaN(Number(match[1]));
+          const num = isFirstNum ? match[1] : match[2];
+          let stat = isFirstNum ? match[2] : match[1];
+          return `${num} ${stat}`;
+        }
+        return part;
+      });
+      exportText += `\nEVs: ${normalizedParts.join(" / ")}`;
+    }
+    
+    if (p.nature) exportText += `\n${p.nature} Nature`;
+    
+    if (p.moves && p.moves.length > 0) {
+      p.moves.forEach((m: string) => {
+        exportText += `\n- ${m}`;
+      });
+    }
+    
+    navigator.clipboard.writeText(exportText).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
   return (
-    <div className="bg-[#121214] border border-[var(--border-color)] rounded-xl overflow-hidden flex flex-col">
+    <div className="bg-[#121214] border border-[var(--border-color)] rounded-xl overflow-hidden flex flex-col relative group">
+      {/* Export to Smogon button, visible on hover */}
+      <button
+        onClick={handleExportToSmogon}
+        className="absolute top-2 right-2 p-1.5 z-10 bg-zinc-800/80 hover:bg-zinc-700 rounded border border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-all opacity-0 group-hover:opacity-100"
+        title="Export to Smogon format"
+      >
+        {copied ? <Check size={14} className="text-emerald-400" /> : <ClipboardCopy size={14} />}
+      </button>
+
       {/* Pokémon header — clickable to open detail */}
       <div
         className="flex items-center gap-3 p-3 bg-zinc-900/60 cursor-pointer hover:bg-zinc-800/60 transition-colors border-b border-[var(--border-color)]"
