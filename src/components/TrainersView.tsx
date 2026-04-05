@@ -104,7 +104,7 @@ function getDbName(name: string) {
   return n;
 }
 
-function formatPokemonForSmogon(p: any): string {
+function formatPokemonForSmogon(p: any, dbEntry?: any): string {
   let exportText = `${getExportName(p.name)}`;
   if (p.item) exportText += ` @ ${p.item}`;
   
@@ -129,6 +129,15 @@ function formatPokemonForSmogon(p: any): string {
   }
   
   if (p.nature) exportText += `\n${p.nature} Nature`;
+
+  if (dbEntry && dbEntry.augmented?.stats && dbEntry.vanilla?.stats) {
+    const aug = dbEntry.augmented.stats;
+    const van = dbEntry.vanilla.stats;
+    const isChanged = aug.hp !== van.hp || aug.atk !== van.atk || aug.def !== van.def || aug.spa !== van.spa || aug.spd !== van.spd || aug.spe !== van.spe;
+    if (isChanged) {
+      exportText += `\nBase Stats: ${aug.hp} HP / ${aug.atk} Atk / ${aug.def} Def / ${aug.spa} SpA / ${aug.spd} SpD / ${aug.spe} Spe`;
+    }
+  }
   
   if (p.moves && p.moves.length > 0) {
     p.moves.forEach((m: string) => {
@@ -138,12 +147,16 @@ function formatPokemonForSmogon(p: any): string {
   return exportText;
 }
 
-function ExportTeamButton({ trainer }: { trainer: any }) {
+function ExportTeamButton({ trainer, database }: { trainer: any; database: Record<string, any> }) {
   const [copied, setCopied] = useState(false);
 
   const handleExport = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const teamExport = trainer.pokemon.map((p: any) => formatPokemonForSmogon(p)).join("\n\n");
+    const teamExport = trainer.pokemon.map((p: any) => {
+      const lookupName = getDbName(p.name);
+      const dbEntry = Object.values(database).find((entry: any) => entry.name === lookupName);
+      return formatPokemonForSmogon(p, dbEntry);
+    }).join("\n\n");
     navigator.clipboard.writeText(teamExport).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -273,7 +286,7 @@ function PokemonCard({
 
   const handleExportToSmogon = (e: React.MouseEvent) => {
     e.stopPropagation();
-    navigator.clipboard.writeText(formatPokemonForSmogon(p)).then(() => {
+    navigator.clipboard.writeText(formatPokemonForSmogon(p, dbEntry)).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
@@ -479,7 +492,7 @@ export default function TrainersView({ database, onSelectPokemon }: TrainersView
                       </div>
 
                       <div className="flex items-center gap-3">
-                        <ExportTeamButton trainer={trainer} />
+                        <ExportTeamButton trainer={trainer} database={database} />
                         <div className="flex items-center gap-1.5 bg-red-950/40 border border-red-900/50 px-3 py-1.5 rounded-lg">
                           <ShieldAlert className="w-4 h-4 text-red-400" />
                           <div className="text-right">
