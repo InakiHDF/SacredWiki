@@ -76,6 +76,92 @@ function Tooltip({ children, content }: { children: React.ReactNode; content: Re
 }
 
 
+// ─── Normalization utilities ────────────────────────────────────────────────
+function getExportName(name: string) {
+  let n = name.replace("Haxorous", "Haxorus")
+              .replace("Wailren", "Walrein")
+              .replace("Hippowdown", "Hippowdon")
+              .replace("Zoroak", "Zoroark")
+              .replace("Duraladon", "Duraludon")
+              .replace("Garbador", "Garbodor");
+
+  if (n === "Cherrim (Overcast)") return "Cherrim";
+  if (n === "Lycanroc Day") return "Lycanroc";
+  if (n === "G-Rapidash") return "Rapidash-Galar";
+  if (n === "Galarian Weezing") return "Weezing-Galar";
+  if (n === "Toxtricity-Lowkey") return "Toxtricity-Low-Key";
+  if (n.startsWith("Zygarde 10%")) return "Zygarde-10%";
+  if (n === "Sirfetch’d") return "Sirfetch'd";
+  n = n.replace(/\s+1$/, ""); 
+  
+  return n;
+}
+
+function getDbName(name: string) {
+  let n = getExportName(name);
+  n = n.replace(/-?(Gmax|Dmax|Gmx|G)$/i, "");
+  if (n === "Sirfetch'd") return "Sirfetch’d";
+  return n;
+}
+
+function formatPokemonForSmogon(p: any): string {
+  let exportText = `${getExportName(p.name)}`;
+  if (p.item) exportText += ` @ ${p.item}`;
+  
+  if (p.ability) exportText += `\nAbility: ${p.ability}`;
+  
+  exportText += `\nLevel: ${p.level}`;
+  
+  if (p.evs) {
+    const parts = p.evs.split("/").map((part: string) => part.trim());
+    const normalizedParts = parts.map((part: string) => {
+      const match = part.match(/^([A-Za-z]+)\s*(\d+)$/) || part.match(/^(\d+)\s*([A-Za-z]+)$/);
+      if (match) {
+        const isFirstNum = !isNaN(Number(match[1]));
+        const num = isFirstNum ? match[1] : match[2];
+        let stat = isFirstNum ? match[2] : match[1];
+        if (stat === 'Spd') stat = 'Spe';
+        return `${num} ${stat}`;
+      }
+      return part;
+    });
+    exportText += `\nEVs: ${normalizedParts.join(" / ")}`;
+  }
+  
+  if (p.nature) exportText += `\n${p.nature} Nature`;
+  
+  if (p.moves && p.moves.length > 0) {
+    p.moves.forEach((m: string) => {
+      exportText += `\n- ${m}`;
+    });
+  }
+  return exportText;
+}
+
+function ExportTeamButton({ trainer }: { trainer: any }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleExport = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const teamExport = trainer.pokemon.map((p: any) => formatPokemonForSmogon(p)).join("\n\n");
+    navigator.clipboard.writeText(teamExport).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  return (
+    <button
+      onClick={handleExport}
+      className={`flex items-center gap-1.5 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider transition-colors border ${copied ? 'bg-emerald-950/40 text-emerald-400 border-emerald-900/50' : 'bg-zinc-800/80 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-200 border-zinc-700'}`}
+      title="Export Team to Smogon format"
+    >
+      {copied ? <Check size={12} /> : <ClipboardCopy size={12} />}
+      Export
+    </button>
+  );
+}
+
 // ─── Stat Bar (identical to PokemonDetail) ───────────────────────────────────
 function StatBar({ label, value }: { label: string; value: number }) {
   const widthPercentage = Math.min((value / 255) * 100, 100);
@@ -187,38 +273,7 @@ function PokemonCard({
 
   const handleExportToSmogon = (e: React.MouseEvent) => {
     e.stopPropagation();
-    
-    let exportText = `${p.name}`;
-    if (p.item) exportText += ` @ ${p.item}`;
-    
-    if (p.ability) exportText += `\nAbility: ${p.ability}`;
-    
-    exportText += `\nLevel: ${p.level}`;
-    
-    if (p.evs) {
-      const parts = p.evs.split("/").map((part: string) => part.trim());
-      const normalizedParts = parts.map((part: string) => {
-        const match = part.match(/^([A-Za-z]+)\s*(\d+)$/) || part.match(/^(\d+)\s*([A-Za-z]+)$/);
-        if (match) {
-          const isFirstNum = !isNaN(Number(match[1]));
-          const num = isFirstNum ? match[1] : match[2];
-          let stat = isFirstNum ? match[2] : match[1];
-          return `${num} ${stat}`;
-        }
-        return part;
-      });
-      exportText += `\nEVs: ${normalizedParts.join(" / ")}`;
-    }
-    
-    if (p.nature) exportText += `\n${p.nature} Nature`;
-    
-    if (p.moves && p.moves.length > 0) {
-      p.moves.forEach((m: string) => {
-        exportText += `\n- ${m}`;
-      });
-    }
-    
-    navigator.clipboard.writeText(exportText).then(() => {
+    navigator.clipboard.writeText(formatPokemonForSmogon(p)).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
@@ -238,13 +293,13 @@ function PokemonCard({
       {/* Pokémon header — clickable to open detail */}
       <div
         className="flex items-center gap-3 p-3 bg-zinc-900/60 cursor-pointer hover:bg-zinc-800/60 transition-colors border-b border-[var(--border-color)]"
-        onClick={() => onSelectPokemon(p.name)}
+        onClick={() => onSelectPokemon(dbEntry?.name || p.name)}
       >
         <div className="w-14 h-14 bg-zinc-800/60 rounded-lg flex items-center justify-center flex-shrink-0 border border-zinc-700/50">
-          <PokemonSprite pokemonName={p.name} className="w-12 h-12 object-contain pixelated" />
+          <PokemonSprite pokemonName={dbEntry?.name || p.name} className="w-12 h-12 object-contain pixelated" />
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-bold text-zinc-100 leading-none mb-1 truncate">{p.name}</h3>
+          <h3 className="text-sm font-bold text-zinc-100 leading-none mb-1 truncate">{getExportName(p.name)}</h3>
           <div className="flex gap-1 flex-wrap mb-1">
             {types.length > 0
               ? types.map((t: string) => (
@@ -404,8 +459,8 @@ export default function TrainersView({ database, onSelectPokemon }: TrainersView
                     className="bg-[var(--panel)] border border-[var(--border-color)] rounded-xl overflow-hidden shadow-md"
                   >
                     {/* Trainer Header — collapse toggle */}
-                    <button
-                      className="w-full flex items-center justify-between p-4 bg-[#1f1f22] hover:bg-zinc-800/70 transition-colors text-left"
+                    <div
+                      className="w-full flex items-center justify-between p-4 bg-[#1f1f22] hover:bg-zinc-800/70 transition-colors text-left cursor-pointer"
                       onClick={() => toggleTrainer(globalIdx)}
                     >
                       <div className="flex items-center gap-3">
@@ -424,6 +479,7 @@ export default function TrainersView({ database, onSelectPokemon }: TrainersView
                       </div>
 
                       <div className="flex items-center gap-3">
+                        <ExportTeamButton trainer={trainer} />
                         <div className="flex items-center gap-1.5 bg-red-950/40 border border-red-900/50 px-3 py-1.5 rounded-lg">
                           <ShieldAlert className="w-4 h-4 text-red-400" />
                           <div className="text-right">
@@ -437,14 +493,15 @@ export default function TrainersView({ database, onSelectPokemon }: TrainersView
                             : <ChevronDown className="w-5 h-5" />}
                         </div>
                       </div>
-                    </button>
+                    </div>
 
                     {/* Pokémon Grid — shown only when expanded */}
                     {isOpen && (
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
                         {trainer.pokemon.map((p: any, pIdx: number) => {
+                          const lookupName = getDbName(p.name);
                           const dbEntry = Object.values(database).find(
-                            (entry: any) => entry.name === p.name
+                            (entry: any) => entry.name === lookupName
                           );
                           return (
                             <PokemonCard
