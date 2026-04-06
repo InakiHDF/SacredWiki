@@ -136,6 +136,25 @@ function formatPokemonForSmogon(p: any, dbEntry?: any): string {
     const isChanged = aug.hp !== van.hp || aug.atk !== van.atk || aug.def !== van.def || aug.spa !== van.spa || aug.spd !== van.spd || aug.spe !== van.spe;
     if (isChanged) {
       exportText += `\nBase Stats: ${aug.hp} HP / ${aug.atk} Atk / ${aug.def} Def / ${aug.spa} SpA / ${aug.spd} SpD / ${aug.spe} Spe`;
+      
+      const ivHP = 31 + 2 * (aug.hp - van.hp);
+      const ivAtk = 31 + 2 * (aug.atk - van.atk);
+      const ivDef = 31 + 2 * (aug.def - van.def);
+      const ivSpa = 31 + 2 * (aug.spa - van.spa);
+      const ivSpd = 31 + 2 * (aug.spd - van.spd);
+      const ivSpe = 31 + 2 * (aug.spe - van.spe);
+      
+      const arr = [];
+      if (ivHP !== 31) arr.push(`${Math.max(0, ivHP)} HP`);
+      if (ivAtk !== 31) arr.push(`${Math.max(0, ivAtk)} Atk`);
+      if (ivDef !== 31) arr.push(`${Math.max(0, ivDef)} Def`);
+      if (ivSpa !== 31) arr.push(`${Math.max(0, ivSpa)} SpA`);
+      if (ivSpd !== 31) arr.push(`${Math.max(0, ivSpd)} SpD`);
+      if (ivSpe !== 31) arr.push(`${Math.max(0, ivSpe)} Spe`);
+      
+      if (arr.length > 0) {
+        exportText += `\nIVs: ${arr.join(" / ")}`;
+      }
     }
   }
   
